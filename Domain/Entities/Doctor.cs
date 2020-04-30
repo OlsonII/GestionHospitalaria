@@ -12,7 +12,24 @@ namespace Domain.Entities
 
         public Doctor(){}
 
-
+        public void GenerateWorkDay() 
+        {
+            switch (Degree)
+            {
+                case "Medico":
+                    Workday = "Jornada Completa";
+                    break;
+                case "Pediatra":
+                    Workday = "Mañana";
+                    break;
+                case "Odontologo":
+                    Workday = "Mañana";
+                    break;
+                case "Oftalmologo":
+                    Workday = "Tarde";
+                    break;
+            }
+        }
 
     }
 }

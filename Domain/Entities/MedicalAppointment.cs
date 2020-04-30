@@ -21,7 +21,7 @@ namespace Domain.Entities
 
         public void GenerateCost() 
         {
-            Cost = _BASECOST * (1 + Patient.Discount);
+            Cost = _BASECOST * (1 - Patient.Discount);
             this.State = "Asignada";
         }
     }
