@@ -1,0 +1,49 @@
+using NUnit.Framework;
+using Domain.Entities;
+using System;
+
+namespace DomainTest
+{
+    public class MedicalAppointmentTest
+    {
+        [SetUp]
+        public void Setup()
+        {
+        }
+
+        [Test]
+        public void RegisterMedicalAppointmentCorrect()
+        {
+            Doctor doctor = new Doctor();
+            doctor.Identification = "1065";
+            doctor.Name = "Juan";
+            doctor.Surname = "Robledo";
+            doctor.Age = 35;
+            doctor.Gender = "Masculino";
+            doctor.Experience = 15;
+            doctor.Degree = "Medico";
+            doctor.GenerateWorkDay();
+
+            Patient patient = new Patient();
+            patient.Identification = "1066";
+            patient.Name = "Pedro";
+            patient.Surname = "Salcedo";
+            patient.Age = 25;
+            patient.Gender = "Masculino";
+            patient.EPS = "Saludvida";
+            patient.Stratum = 2;
+            patient.GenerateDiscount();
+
+            MedicalAppointment medicalAppointment = new MedicalAppointment();
+            medicalAppointment.Date = DateTime.Now.AddDays(10);
+            medicalAppointment.Hour = medicalAppointment.Date.AddHours(8);
+            medicalAppointment.Doctor = doctor;
+            medicalAppointment.Patient = patient;
+            medicalAppointment.GenerateCost();
+
+            Assert.AreEqual(80000, medicalAppointment.Cost);
+        }
+
+        
+    }
+}
