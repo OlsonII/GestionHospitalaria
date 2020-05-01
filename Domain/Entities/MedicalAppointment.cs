@@ -11,6 +11,7 @@ namespace Domain.Entities
         public Patient Patient { get; set; }
         public DateTime Hour { get; set; }
         public DateTime Date { get; set; }
+        public Prescription Prescription { get; set; }
         public string State { get; set; }
         public double Cost { get; private set; }
 
