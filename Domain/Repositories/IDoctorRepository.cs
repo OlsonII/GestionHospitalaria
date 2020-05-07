@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace Domain.Repositories
 {
-    public interface IMedicalExamRepository : IGenericRepository<MedicalExam>
+    public interface IDoctorRepository : IGenericRepository<Doctor>
     {
         
     }

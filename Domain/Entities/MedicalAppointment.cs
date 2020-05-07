@@ -12,6 +12,7 @@ namespace Domain.Entities
         public Patient Patient { get; set; }
         public DateTime Hour { get; set; }
         public DateTime Date { get; set; }
+        
         public Prescription Prescription { get; set; }
         public string State { get; set; }
         public double Cost { get; private set; }
@@ -24,7 +25,23 @@ namespace Domain.Entities
         public void GenerateCost() 
         {
             Cost = _BASECOST * (1 - Patient.Discount);
-            this.State = "Asignada";
+            State = "Asignada";
+        }
+
+        public void CompleteMedicalAppointment(Prescription prescription)
+        {
+            Prescription = prescription;
+            State = "Completada";
+        }
+        
+        public void CancelMedicalAppointment()
+        {
+            State = "Cancelada";
+        }
+        
+        public void PostponeMedicalAppointment()
+        {
+            State = "Aplazada";
         }
     }
 }

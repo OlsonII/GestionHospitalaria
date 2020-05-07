@@ -1,8 +1,9 @@
 ﻿using System;
+using Domain.Base;
 
 namespace Domain
 {
-    public abstract class Person
+    public abstract class Person : Entity<int>
     {
         public string Identification { get; set; }
         public string Name { get; set; }

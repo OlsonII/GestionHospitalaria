@@ -10,6 +10,8 @@ namespace Infrastructure.Base
         private IDbContext _dbContext;
         private IMedicalAppointmentRepository _medicalAppointmentRepository;
         private IMedicalExamRepository _medicalExamRepository;
+        private IDoctorRepository _doctorRepository;
+        private IPatientRepository _patientRepository;
         public IMedicalAppointmentRepository MedicalAppointmentRepository
         {
             get
@@ -25,6 +27,24 @@ namespace Infrastructure.Base
             {
                 return _medicalExamRepository ??
                        (_medicalExamRepository = new MedicalExamRepository(_dbContext));
+            }
+        }
+        
+        public IDoctorRepository DoctorRepository
+        {
+            get
+            {
+                return _doctorRepository ??
+                       (_doctorRepository = new DoctorRepository(_dbContext));
+            }
+        }
+        
+        public IPatientRepository PatientRepository
+        {
+            get
+            {
+                return _patientRepository ??
+                       (_patientRepository = new PatientRepository(_dbContext));
             }
         }
 

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Domain.Base;
 
 namespace Domain.Entities
 {
-    public class Prescription
+    public class Prescription : Entity<int>
     {
         public int Code { get; set; }
         public DateTime CreationDate { get; set; }

@@ -23,5 +23,20 @@ namespace Domain.Entities
             Cost = Basecost * (1 - Patient.Discount);
             this.State = "Asignada";
         }
+
+        public void CompleteExam()
+        {
+            State = "Completado";
+        }
+        
+        public void CancelExam()
+        {
+            State = "Cancelado";
+        }
+        
+        public void PostponeExam()
+        {
+            State = "Aplazado";
+        }
     }
 }
