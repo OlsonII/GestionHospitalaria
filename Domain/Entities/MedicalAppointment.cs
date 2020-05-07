@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Domain.Base;
 
 namespace Domain.Entities
 {
-    public class MedicalAppointment : IMedicalService
+    public class MedicalAppointment : Entity<int>, IMedicalService
     {
         public string Code { get; set; }
         public Doctor Doctor { get; set; }

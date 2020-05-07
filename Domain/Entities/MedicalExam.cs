@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Domain.Base;
 
 namespace Domain.Entities
 {
-    public class MedicalExam : IMedicalService
+    public class MedicalExam : Entity<int>, IMedicalService
     {
         public string Code { get; set; }
         public string Name { get; set; }
@@ -14,12 +15,12 @@ namespace Domain.Entities
         public string State { get; set; }
         public double Cost { get; private set; }
 
-        private const double _BASECOST = 50000;
+        private const double Basecost = 50000;
 
 
         public void GenerateCost()
         {
-            Cost = _BASECOST * (1 - Patient.Discount);
+            Cost = Basecost * (1 - Patient.Discount);
             this.State = "Asignada";
         }
     }
