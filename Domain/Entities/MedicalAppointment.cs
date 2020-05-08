@@ -39,9 +39,11 @@ namespace Domain.Entities
             State = "Cancelada";
         }
         
-        public void PostponeMedicalAppointment()
+        public void PostponeMedicalAppointment(DateTime date, DateTime hour)
         {
             State = "Aplazada";
+            Date = date;
+            Hour = hour;
         }
     }
 }

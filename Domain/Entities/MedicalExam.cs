@@ -34,9 +34,11 @@ namespace Domain.Entities
             State = "Cancelado";
         }
         
-        public void PostponeExam()
+        public void PostponeExam(DateTime date, DateTime hour)
         {
             State = "Aplazado";
+            Date = date;
+            Hour = hour;
         }
     }
 }

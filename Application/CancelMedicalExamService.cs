@@ -1,0 +1,39 @@
+﻿using Domain.Contracts;
+using Domain.Entities;
+
+namespace Application
+{
+    public class CancelMedicalExamService
+    {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public CancelMedicalExamService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        public CancelMedicalExamResponse Ejecute(CancelMedicalExamRequest request)
+        {
+            MedicalExam exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Code == request.Code);
+            if (exam != null)
+            {
+                exam.CancelExam();
+                _unitOfWork.Commit();
+                return new CancelMedicalExamResponse(){Mensaje = $"Examen cancelado Correctamente"};
+            }
+            
+            return new CancelMedicalExamResponse(){Mensaje = $"Error al cancelar el examen"};
+        }
+        
+    }
+
+    public class CancelMedicalExamRequest
+    {
+        public string Code { get; set; }
+    }
+    
+    public class CancelMedicalExamResponse
+    {
+        public string Mensaje { get; set; }
+    }
+}
