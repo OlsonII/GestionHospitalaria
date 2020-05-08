@@ -7,7 +7,6 @@ namespace Domain.Entities
 {
     public class Patient : Person
     {
-
         public string EPS { get; set; }
         public int Stratum { get; set; }
         public double Discount { get; private set; }

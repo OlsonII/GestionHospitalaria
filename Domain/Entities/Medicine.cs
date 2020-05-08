@@ -7,6 +7,7 @@ namespace Domain.Entities
 {
     public class Medicine : Entity<int>
     {
+        public override int Id { get; set; }
         public string Name { get; set; }
         public int Quantity { get; set; }
         public double Periodicity { get; set; }

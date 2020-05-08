@@ -17,11 +17,11 @@ namespace Application
             Patient newPatient = null;
             Patient patient =
                 _unitOfWork.PatientRepository.FindFirstOrDefault(p =>
-                    p.Identification == request.Identification);
+                    p.Id == request.Identification);
             if (patient == null)
             {
                 newPatient = new Patient();
-                newPatient.Identification = request.Identification;
+                newPatient.Id = request.Identification;
                 newPatient.Name = request.Name;
                 newPatient.Surname = request.Surname;
                 newPatient.Age = request.Age;

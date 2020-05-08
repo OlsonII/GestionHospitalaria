@@ -18,11 +18,11 @@ namespace Application
             Doctor newDoctor = null;
             Doctor doctor =
                 _unitOfWork.DoctorRepository.FindFirstOrDefault(d =>
-                    d.Identification == request.Identification);
+                    d.Id == request.Identification);
             if (doctor == null)
             {
                 newDoctor = new Doctor();
-                newDoctor.Identification = request.Identification;
+                newDoctor.Id = request.Identification;
                 newDoctor.Name = request.Name;
                 newDoctor.Surname = request.Surname;
                 newDoctor.Age = request.Age;

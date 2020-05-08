@@ -7,7 +7,7 @@ namespace Domain.Entities
 {
     public class MedicalAppointment : Entity<int>, IMedicalService
     {
-        public override int Identification { get; set; }
+        public override int Id { get; set; }
         public Doctor Doctor { get; set; }
         public Patient Patient { get; set; }
         public DateTime Hour { get; set; }

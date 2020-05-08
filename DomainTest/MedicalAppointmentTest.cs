@@ -15,7 +15,7 @@ namespace DomainTest
         public void RegisterMedicalAppointmentCorrect()
         {
             Doctor doctor = new Doctor();
-            doctor.Identification = "1065";
+            doctor.Id = "1065";
             doctor.Name = "Juan";
             doctor.Surname = "Robledo";
             doctor.Age = 35;
@@ -25,7 +25,7 @@ namespace DomainTest
             doctor.GenerateWorkDay();
 
             Patient patient = new Patient();
-            patient.Identification = "1066";
+            patient.Id = "1066";
             patient.Name = "Pedro";
             patient.Surname = "Salcedo";
             patient.Age = 25;

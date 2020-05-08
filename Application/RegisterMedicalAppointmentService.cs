@@ -17,7 +17,7 @@ namespace Application
         {
             MedicalAppointment newMedicalAppointment = null;
             MedicalAppointment medicalAppointment =
-                _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Identification == request.Identification);
+                _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Id == request.Identification);
             if (medicalAppointment == null)
             {
                 newMedicalAppointment = new MedicalAppointment();

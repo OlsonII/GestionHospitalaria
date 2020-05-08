@@ -14,7 +14,7 @@ namespace DomainTest
         public void GenerateWorkdayPediatricianCorrect()
         {
             Doctor doctor = new Doctor();
-            doctor.Identification = "1065";
+            doctor.Id = "1065";
             doctor.Name = "Juan";
             doctor.Surname = "Robledo";
             doctor.Age = 35;
@@ -29,7 +29,7 @@ namespace DomainTest
         public void GenerateWorkdayDoctorCorrect()
         {
             Doctor doctor = new Doctor();
-            doctor.Identification = "1065";
+            doctor.Id = "1065";
             doctor.Name = "Juan";
             doctor.Surname = "Robledo";
             doctor.Age = 35;
@@ -44,7 +44,7 @@ namespace DomainTest
         public void GenerateWorkdayOphthalmologistCorrect()
         {
             Doctor doctor = new Doctor();
-            doctor.Identification = "1065";
+            doctor.Id = "1065";
             doctor.Name = "Juan";
             doctor.Surname = "Robledo";
             doctor.Age = 35;
@@ -59,7 +59,7 @@ namespace DomainTest
         public void GenerateWorkdayDentistCorrect()
         {
             Doctor doctor = new Doctor();
-            doctor.Identification = "1065";
+            doctor.Id = "1065";
             doctor.Name = "Juan";
             doctor.Surname = "Robledo";
             doctor.Age = 35;

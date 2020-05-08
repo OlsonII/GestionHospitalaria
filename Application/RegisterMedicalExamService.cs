@@ -16,7 +16,7 @@ namespace Application
         public RegisterMedicalExamResponse Ejecute(RegisterMedicalExamRequest request)
         {
             MedicalExam newExam = null;
-            MedicalExam exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Identification == request.Identification);
+            MedicalExam exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Id == request.Identification);
             if (exam == null)
             {
                 newExam = new MedicalExam();

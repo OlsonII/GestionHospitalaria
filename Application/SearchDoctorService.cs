@@ -19,7 +19,7 @@ namespace Application
             if (request.Identification != null)
             {
                 Doctor doctor =
-                    _unitOfWork.DoctorRepository.FindFirstOrDefault(d => d.Identification == request.Identification);
+                    _unitOfWork.DoctorRepository.FindFirstOrDefault(d => d.Id == request.Identification);
                 return new SearchDoctorResponse(){Doctor = doctor};
             }
             

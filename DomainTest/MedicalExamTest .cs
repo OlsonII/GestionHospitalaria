@@ -15,7 +15,7 @@ namespace DomainTest
         public void RegisterMedicalAppointmentCorrect()
         {
             Patient patient = new Patient();
-            patient.Identification = "1066";
+            patient.Id = "1066";
             patient.Name = "Pedro";
             patient.Surname = "Salcedo";
             patient.Age = 25;

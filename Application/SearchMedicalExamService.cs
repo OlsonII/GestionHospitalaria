@@ -14,7 +14,7 @@ namespace Application
 
         public SearchMedicalExamResponse Ejecute(SearchMedicalExamRequest request)
         {
-            MedicalExam medicalExam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(m => m.Identification == request.Identification);
+            MedicalExam medicalExam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(m => m.Id == request.Identification);
             return new SearchMedicalExamResponse(){MedicalExam = medicalExam};
         }
     }
