@@ -6,7 +6,6 @@ namespace Domain.Entities
 {
     public interface IMedicalService
     {
-        string Code { get; set; }
         Patient Patient { get; set; }
         DateTime Hour { get; set; }
         DateTime Date { get; set; }

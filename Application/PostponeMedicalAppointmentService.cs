@@ -16,7 +16,7 @@ namespace Application
         public PostponeMedicalAppointmentResponse Ejecute(PostponeMedicalAppointmentRequest request)
         {
             MedicalAppointment medicalAppointment =
-                _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Code == request.Code);
+                _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Identification == request.Identification);
             if (medicalAppointment != null)
             {
                 medicalAppointment.PostponeMedicalAppointment(request.Date, request.Hour);
@@ -31,7 +31,7 @@ namespace Application
     
     public class PostponeMedicalAppointmentRequest
     {
-        public string Code { get; set; }
+        public int Identification { get; set; }
         public DateTime Date { get; set; }
         public DateTime Hour { get; set; }
     }

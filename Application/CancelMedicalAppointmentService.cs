@@ -15,7 +15,7 @@ namespace Application
         public CancelMedicalAppointmentResponse Ejecute(CancelMedicalAppointmentRequest request)
         {
             MedicalAppointment medicalAppointment =
-                _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Code == request.Code);
+                _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Identification == request.Identification);
             if (medicalAppointment != null)
             {
                 medicalAppointment.CancelMedicalAppointment();
@@ -30,7 +30,7 @@ namespace Application
     
     public class CancelMedicalAppointmentRequest
     {
-        public string Code { get; set; }
+        public int Identification { get; set; }
     }
     
     public class CancelMedicalAppointmentResponse

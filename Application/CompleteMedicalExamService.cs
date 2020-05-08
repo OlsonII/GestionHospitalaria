@@ -14,7 +14,7 @@ namespace Application
 
         public CompleteMedicalExamResponse Ejecute(CompleteMedicalExamRequest request)
         {
-            MedicalExam exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Code == request.Code);
+            MedicalExam exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Identification == request.Identification);
             if (exam != null)
             {
                 exam.CompleteExam();
@@ -29,7 +29,7 @@ namespace Application
 
     public class CompleteMedicalExamRequest
     {
-        public string Code { get; set; }
+        public int Identification { get; set; }
     }
     
     public class CompleteMedicalExamResponse

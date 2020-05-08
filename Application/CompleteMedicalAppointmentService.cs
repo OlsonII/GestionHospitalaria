@@ -16,7 +16,7 @@ namespace Application
         public CompleteMedicalAppointmentResponse Ejecute(CompleteMedicalAppointmentRequest request)
         {
             MedicalAppointment medicalAppointment =
-                _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Code == request.Code);
+                _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Identification == request.Identification);
             if (medicalAppointment != null)
             {
                 medicalAppointment.CompleteMedicalAppointment(request.Prescription);
@@ -31,7 +31,7 @@ namespace Application
     
     public class CompleteMedicalAppointmentRequest
     {
-        public string Code { get; set; }
+        public int Identification { get; set; }
         public Prescription Prescription { get; set; }
     }
     

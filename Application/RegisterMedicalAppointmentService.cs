@@ -17,11 +17,11 @@ namespace Application
         {
             MedicalAppointment newMedicalAppointment = null;
             MedicalAppointment medicalAppointment =
-                _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Code == request.Code);
+                _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Identification == request.Identification);
             if (medicalAppointment == null)
             {
                 newMedicalAppointment = new MedicalAppointment();
-                newMedicalAppointment.Code = request.Code;
+                // newMedicalAppointment.Identification = request.Identification;
                 newMedicalAppointment.Doctor = request.Doctor;
                 newMedicalAppointment.Patient = request.Patient;
                 newMedicalAppointment.Date = request.Date;
@@ -42,7 +42,7 @@ namespace Application
 
     public class RegisterMedicalAppointmentRequest
     {
-        public string Code { get; set; }
+        public int Identification { get; set; }
         public Doctor Doctor { get; set; }
         public Patient Patient { get; set; }
         public DateTime Hour { get; set; }

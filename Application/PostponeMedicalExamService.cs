@@ -15,7 +15,7 @@ namespace Application
 
         public PostponeMedicalExamResponse Ejecute(PostponeMedicalExamRequest request)
         {
-            MedicalExam exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Code == request.Code);
+            MedicalExam exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Identification == request.Identification);
             if (exam != null)
             {
                 exam.CancelExam();
@@ -30,7 +30,7 @@ namespace Application
 
     public class PostponeMedicalExamRequest
     {
-        public string Code { get; set; }
+        public int Identification { get; set; }
         public DateTime Date { get; set; }
         public DateTime Hour { get; set; }
     }

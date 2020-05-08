@@ -16,11 +16,11 @@ namespace Application
         public RegisterMedicalExamResponse Ejecute(RegisterMedicalExamRequest request)
         {
             MedicalExam newExam = null;
-            MedicalExam exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Code == request.Code);
+            MedicalExam exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Identification == request.Identification);
             if (exam == null)
             {
                 newExam = new MedicalExam();
-                newExam.Code = request.Code;
+                // newExam.Identification = request.Identification;
                 newExam.Name = request.Name;
                 newExam.Patient = request.Patient;
                 newExam.Date = request.Date;
@@ -41,7 +41,7 @@ namespace Application
     
     public class RegisterMedicalExamRequest
     {
-        public string Code { get; set; }
+        public int Identification { get; set; }
         public string Name { get; set; }
         public Patient Patient { get; set; }
         public DateTime Hour { get; set; }

@@ -14,7 +14,7 @@ namespace Application
 
         public CancelMedicalExamResponse Ejecute(CancelMedicalExamRequest request)
         {
-            MedicalExam exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Code == request.Code);
+            MedicalExam exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Identification == request.Identification);
             if (exam != null)
             {
                 exam.CancelExam();
@@ -29,7 +29,7 @@ namespace Application
 
     public class CancelMedicalExamRequest
     {
-        public string Code { get; set; }
+        public int Identification { get; set; }
     }
     
     public class CancelMedicalExamResponse

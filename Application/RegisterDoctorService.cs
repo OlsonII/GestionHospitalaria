@@ -22,6 +22,7 @@ namespace Application
             if (doctor == null)
             {
                 newDoctor = new Doctor();
+                newDoctor.Identification = request.Identification;
                 newDoctor.Name = request.Name;
                 newDoctor.Surname = request.Surname;
                 newDoctor.Age = request.Age;
