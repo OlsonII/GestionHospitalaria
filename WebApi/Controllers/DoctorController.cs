@@ -1,6 +1,7 @@
 ﻿using Application;
 using Domain.Contracts;
 using Domain.Entities;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -15,6 +16,7 @@ namespace WebApi.Controllers
         {
             _unitOfWork = unitOfWork;
         }
+        
         
         [HttpGet]
         public ActionResult<Doctor> Get()
@@ -32,6 +34,7 @@ namespace WebApi.Controllers
             var response = service.Ejecute(new SearchDoctorRequest(){Identification = identification});
             return Ok(response);
         }
+        
         
         [HttpPost]
         public ActionResult<RegisterDoctorResponse> Post(RegisterDoctorRequest request)

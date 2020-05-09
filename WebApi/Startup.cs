@@ -30,11 +30,23 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddDbContext<MedicalContext>(opt =>
                 opt.UseSqlServer("Server=DESKTOP-N95GP02\\SQLEXPRESS;Database=MedicalServices;Trusted_Connection=True;MultipleActiveResultSets=true"));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IDbContext, MedicalContext>();
+
+            services.AddCors(options =>
+                {
+                    options.AddPolicy(name: "Flutter",
+                        builder =>
+                        {
+                            builder.WithOrigins("http://localhost:64618").WithMethods("PUT", "DELETE", "GET");
+                        });
+                }
+
+            );
             
             services.AddControllers();
             
@@ -74,7 +86,7 @@ namespace WebApi
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("Flutter");
             app.UseRouting();
 
             app.UseAuthorization();
