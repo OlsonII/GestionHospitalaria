@@ -24,11 +24,15 @@ namespace Application
                     _unitOfWork.MedicalAppointmentRepository.
                         FindBy(m => m.Patient.Id == request.PatientIdentification).ToList();
             }
-            else
+            else if(request.DoctorIdentification != null)
             {
                 medicalAppointment =
                     _unitOfWork.MedicalAppointmentRepository.
                         FindBy(m => m.Doctor.Id == request.DoctorIdentification).ToList();
+            }
+            else
+            {
+                return new SearchMedicalAppointmentResponse(){MedicalAppointment = _unitOfWork.MedicalAppointmentRepository.GetAll().ToList()};
             }
             /*foreach (var m in medicalAppointment)
             {

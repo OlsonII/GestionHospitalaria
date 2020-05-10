@@ -34,10 +34,8 @@ namespace Application
                 _unitOfWork.Commit();
                 return new RegisterDoctorResponse(){Mensaje = "Doctor registrado satisfactoriamente"};
             }
-            else
-            {
-                return new RegisterDoctorResponse(){Mensaje = "Error al registrar el doctor"};
-            }
+            
+            return new RegisterDoctorResponse(){Mensaje = "El doctor que intenta registrar ya existe"};
         }
     }
 

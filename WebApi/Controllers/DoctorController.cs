@@ -19,7 +19,7 @@ namespace WebApi.Controllers
         
         
         [HttpGet]
-        public ActionResult<Doctor> Get()
+        public ActionResult<Doctor> GetAllDoctors()
         {
             var service = new SearchDoctorService(_unitOfWork);
             var response = service.Ejecute(new SearchDoctorRequest(){Identification = null});

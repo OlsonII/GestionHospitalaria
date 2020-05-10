@@ -24,7 +24,9 @@ namespace WebApi.Controllers
         [HttpGet]
         public ActionResult<string> Get()
         {
-            return Ok("Ok");
+            var service = new SearchMedicalAppointmentService(_unitOfWork);
+            var response = service.Ejecute(new SearchMedicalAppointmentRequest(){DoctorIdentification = null, PatientIdentification = null});
+            return Ok(response);
         }
         
         [HttpGet("patient/{identification}")]
