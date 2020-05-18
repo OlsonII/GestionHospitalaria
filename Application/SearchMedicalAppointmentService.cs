@@ -5,6 +5,8 @@ using Domain.Entities;
 
 namespace Application
 {
+    
+    
     public class SearchMedicalAppointmentService
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -22,23 +24,18 @@ namespace Application
             {
                 medicalAppointment =
                     _unitOfWork.MedicalAppointmentRepository.
-                        FindBy(m => m.Patient.Id == request.PatientIdentification).ToList();
+                        FindBy(m => m.Patient.Id == request.PatientIdentification, includeProperties: "Doctor,Patient").ToList();
             }
             else if(request.DoctorIdentification != null)
             {
                 medicalAppointment =
                     _unitOfWork.MedicalAppointmentRepository.
-                        FindBy(m => m.Doctor.Id == request.DoctorIdentification).ToList();
+                        FindBy(m => m.Doctor.Id == request.DoctorIdentification, includeProperties: "Doctor,Patient").ToList();
             }
             else
             {
-                return new SearchMedicalAppointmentResponse(){MedicalAppointment = _unitOfWork.MedicalAppointmentRepository.GetAll().ToList()};
+                medicalAppointment = _unitOfWork.MedicalAppointmentRepository.FindBy(includeProperties: "Doctor,Patient").ToList();
             }
-            /*foreach (var m in medicalAppointment)
-            {
-                m.Patient = new SearchPatientService(_unitOfWork).Ejecute(new SearchPatientRequest(){Identification = request.PatientIdentification}).Patient;
-                m.Doctor = new SearchDoctorService(_unitOfWork).Ejecute(new SearchDoctorRequest(){Identification = request.DoctorIdentification}).Doctor;
-            }*/
             return new SearchMedicalAppointmentResponse(){MedicalAppointment = medicalAppointment};
         }
     }

@@ -18,7 +18,7 @@ namespace Infrastructure.Base
     {
         public DbContextBase(DbContextOptions options) : base(options)
         {
-
+            
         }
         
         public void SetModified(object entity)

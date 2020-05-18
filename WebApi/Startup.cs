@@ -42,10 +42,9 @@ namespace WebApi
                     options.AddPolicy(name: "Flutter",
                         builder =>
                         {
-                            builder.WithOrigins("http://localhost:54044").WithMethods("PUT", "DELETE", "GET");
+                            builder.WithOrigins("http://localhost").AllowAnyOrigin().WithMethods("PUT", "DELETE", "POST", "GET");
                         });
                 }
-
             );
             
             services.AddControllers();

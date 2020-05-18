@@ -43,7 +43,5 @@ namespace DomainTest
 
             Assert.AreEqual(80000, medicalAppointment.Cost);
         }
-
-        
     }
 }

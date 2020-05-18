@@ -4,6 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using Domain.Base;
 using Domain.Contracts;
+using Domain.Entities;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Base
@@ -21,7 +23,6 @@ namespace Infrastructure.Base
 
         public virtual IEnumerable<T> GetAll()
         {
-
             return _dbset.AsEnumerable<T>();
         }
 
@@ -30,7 +31,7 @@ namespace Infrastructure.Base
             return _dbset.Find(id);
         }
 
-        public IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
+        public virtual IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
             IEnumerable<T> query = _dbset.Where(predicate).AsEnumerable();
             return query;
