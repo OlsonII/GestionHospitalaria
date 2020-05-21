@@ -22,7 +22,7 @@ namespace DomainTest
             doctor.Gender = "Masculino";
             doctor.Experience = 15;
             doctor.Degree = "Medico";
-            doctor.GenerateWorkDay();
+            doctor.Workday = "Jornada Completa";
 
             Patient patient = new Patient();
             patient.Id = "1066";
@@ -32,7 +32,7 @@ namespace DomainTest
             patient.Gender = "Masculino";
             patient.EPS = "Saludvida";
             patient.Stratum = 2;
-            patient.GenerateDiscount();
+            patient.Discount = 0.6;
 
             MedicalAppointment medicalAppointment = new MedicalAppointment();
             medicalAppointment.Date = DateTime.Now.AddDays(10);

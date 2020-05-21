@@ -29,7 +29,7 @@ namespace Application
                 newDoctor.Gender = request.Gender;
                 newDoctor.Degree = request.Degree;
                 newDoctor.Experience = request.Experience;
-                newDoctor.GenerateWorkDay();
+                newDoctor.Workday = new SearchWorkdayByDegreeService(_unitOfWork).Ejecute(new SearchWorkdayByDegreeRequest(){Degree = newDoctor.Degree}).Workday;
                 _unitOfWork.DoctorRepository.Add(newDoctor);
                 _unitOfWork.Commit();
                 return new RegisterDoctorResponse(){Mensaje = "Doctor registrado satisfactoriamente"};

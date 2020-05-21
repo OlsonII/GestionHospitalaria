@@ -22,7 +22,7 @@ namespace DomainTest
             patient.Gender = "Masculino";
             patient.EPS = "Saludvida";
             patient.Stratum = 2;
-            patient.GenerateDiscount();
+            patient.Discount = 0.6;
 
             MedicalExam medicalExam = new MedicalExam();
             medicalExam.Name = "Examen de orina";

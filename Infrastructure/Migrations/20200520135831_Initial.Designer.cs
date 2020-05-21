@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MedicalContext))]
-    [Migration("20200508062822_Initial")]
+    [Migration("20200520135831_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -199,6 +199,60 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Prescriptions");
+                });
+
+            modelBuilder.Entity("Domain.Entities.StratumConfiguration", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("StratumFive")
+                        .HasColumnType("float");
+
+                    b.Property<double>("StratumFour")
+                        .HasColumnType("float");
+
+                    b.Property<double>("StratumOne")
+                        .HasColumnType("float");
+
+                    b.Property<double>("StratumSix")
+                        .HasColumnType("float");
+
+                    b.Property<double>("StratumThree")
+                        .HasColumnType("float");
+
+                    b.Property<double>("StratumTwo")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StratumConfigurations");
+                });
+
+            modelBuilder.Entity("Domain.Entities.WorkdayConfiguration", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DentistWorkday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DoctorWorkday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OphthalmologistWorkday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PediatricianWorkday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WorkdayConfigurations");
                 });
 
             modelBuilder.Entity("Domain.Entities.MedicalAppointment", b =>

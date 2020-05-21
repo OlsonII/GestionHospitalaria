@@ -9,11 +9,11 @@ namespace Domain.Entities
     {
         public int Experience { get; set; }
         public string Degree { get; set; }
-        public string Workday { get; private set; }
+        public string Workday { get; set; }
 
         public Doctor(){}
 
-        public void GenerateWorkDay() 
+        /*public void GenerateWorkDay() 
         {
             switch (Degree)
             {
@@ -30,7 +30,7 @@ namespace Domain.Entities
                     Workday = "Tarde";
                     break;
             }
-        }
+        }*/
 
     }
 }

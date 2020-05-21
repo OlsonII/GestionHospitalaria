@@ -12,6 +12,27 @@ namespace Infrastructure.Base
         private IMedicalExamRepository _medicalExamRepository;
         private IDoctorRepository _doctorRepository;
         private IPatientRepository _patientRepository;
+        private IStratumConfigurationRepository _stratumConfigurationRepository;
+        private IWorkdayConfigurationRepository _workdayConfigurationRepository;
+        
+        public IStratumConfigurationRepository StratumConfigurationRepository
+        {
+            get
+            {
+                return _stratumConfigurationRepository ??
+                       (_stratumConfigurationRepository = new StratumConfigurationRepository(_dbContext));
+            }
+        }
+        
+        public IWorkdayConfigurationRepository WorkdayConfigurationRepository
+        {
+            get
+            {
+                return _workdayConfigurationRepository ??
+                       (_workdayConfigurationRepository = new WorkdayConfigurationRepository(_dbContext));
+            }
+        }
+        
         public IMedicalAppointmentRepository MedicalAppointmentRepository
         {
             get

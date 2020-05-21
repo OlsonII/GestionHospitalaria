@@ -25,7 +25,6 @@ namespace Application
                 newMedicalAppointment = new MedicalAppointment();
                 newMedicalAppointment.Doctor = new SearchDoctorService(_unitOfWork).Ejecute(new SearchDoctorRequest{Identification = request.Doctor.Id}).Doctor;
                 newMedicalAppointment.Patient = new SearchPatientService(_unitOfWork).Ejecute(new SearchPatientRequest{Identification = request.Patient.Id}).Patient;
-                newMedicalAppointment.Patient.GenerateDiscount();
                 newMedicalAppointment.Date = request.Date;
                 newMedicalAppointment.Hour = request.Hour;
                 newMedicalAppointment.Prescription = null;

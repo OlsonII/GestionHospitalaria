@@ -59,6 +59,40 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "StratumConfigurations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StratumOne = table.Column<double>(type: "float", nullable: false),
+                    StratumTwo = table.Column<double>(type: "float", nullable: false),
+                    StratumThree = table.Column<double>(type: "float", nullable: false),
+                    StratumFour = table.Column<double>(type: "float", nullable: false),
+                    StratumFive = table.Column<double>(type: "float", nullable: false),
+                    StratumSix = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StratumConfigurations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WorkdayConfigurations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DoctorWorkday = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PediatricianWorkday = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OphthalmologistWorkday = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DentistWorkday = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkdayConfigurations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MedicalExams",
                 columns: table => new
                 {
@@ -177,6 +211,12 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Medicine");
+
+            migrationBuilder.DropTable(
+                name: "StratumConfigurations");
+
+            migrationBuilder.DropTable(
+                name: "WorkdayConfigurations");
 
             migrationBuilder.DropTable(
                 name: "Doctors");

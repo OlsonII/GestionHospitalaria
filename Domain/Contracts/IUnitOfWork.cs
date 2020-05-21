@@ -9,7 +9,9 @@ namespace Domain.Contracts
         IMedicalExamRepository MedicalExamRepository { get; }
         IDoctorRepository DoctorRepository { get; }
         IPatientRepository PatientRepository { get;}
-        
+        IWorkdayConfigurationRepository WorkdayConfigurationRepository { get; }
+        IStratumConfigurationRepository StratumConfigurationRepository { get; }
+
         int Commit();
     }
 }

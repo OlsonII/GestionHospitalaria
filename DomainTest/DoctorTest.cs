@@ -21,7 +21,7 @@ namespace DomainTest
             doctor.Gender = "Masculino";
             doctor.Experience = 15;
             doctor.Degree = "Pediatra";
-            doctor.GenerateWorkDay();
+            doctor.Workday = "Mañana";
             Assert.AreEqual("Mañana", doctor.Workday);
         }
 
@@ -36,7 +36,7 @@ namespace DomainTest
             doctor.Gender = "Masculino";
             doctor.Experience = 15;
             doctor.Degree = "Medico";
-            doctor.GenerateWorkDay();
+            doctor.Workday = "Jornada Completa";
             Assert.AreEqual("Jornada Completa", doctor.Workday);
         }
 
@@ -51,7 +51,7 @@ namespace DomainTest
             doctor.Gender = "Masculino";
             doctor.Experience = 15;
             doctor.Degree = "Oftalmologo";
-            doctor.GenerateWorkDay();
+            doctor.Workday = "Tarde";
             Assert.AreEqual("Tarde", doctor.Workday);
         }
 
@@ -66,7 +66,7 @@ namespace DomainTest
             doctor.Gender = "Masculino";
             doctor.Experience = 15;
             doctor.Degree = "Odontologo";
-            doctor.GenerateWorkDay();
+            doctor.Workday = "Mañana";
             Assert.AreEqual("Mañana", doctor.Workday);
         }
     }

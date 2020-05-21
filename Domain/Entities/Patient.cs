@@ -9,11 +9,11 @@ namespace Domain.Entities
     {
         public string EPS { get; set; }
         public int Stratum { get; set; }
-        public double Discount { get; private set; }
+        public double Discount { get; set; }
 
         public Patient(){}
 
-        public void GenerateDiscount() 
+        /*public void GenerateDiscount() 
         {
             switch (this.Stratum)
             {
@@ -36,7 +36,7 @@ namespace Domain.Entities
                     this.Discount = 0.0;
                     break;
             }            
-        }
+        }*/
 
     }
 }
