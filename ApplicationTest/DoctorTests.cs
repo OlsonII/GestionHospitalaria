@@ -13,11 +13,19 @@ namespace ApplicationTest
         [SetUp]
         public void Setup()
         {
-            var optionsInDb = new DbContextOptionsBuilder<MedicalContext>()
+            /*var optionsInDb = new DbContextOptionsBuilder<MedicalContext>()
                 .UseSqlServer("Server=DESKTOP-N95GP02\\SQLEXPRESS;Database=MedicalServices;Trusted_Connection=True;MultipleActiveResultSets=true")
                 .Options;
             
-            _context = new MedicalContext(optionsInDb);
+            _context = new MedicalContext(optionsInDb);*/
+            
+            var optionsInMemory = new DbContextOptionsBuilder<MedicalContext>().UseInMemoryDatabase("MedicalServices").Options;
+
+            _context = new MedicalContext(optionsInMemory);
+            
+            var registerWorkdayRequest = new RegisterWorkdayByDegreeRequest(){DentistWorkday = "Mañana", DoctorWorkday = "Jornada Completa", OphthalmologistWorkday = "Tarde", PediatricianWorkday = "Mañana"};
+            var registerWorkdayService = new RegisterWorkdayByDegreeService(new UnitOfWork(_context));
+            registerWorkdayService.Ejecute(registerWorkdayRequest);
         }
         
         [Test]

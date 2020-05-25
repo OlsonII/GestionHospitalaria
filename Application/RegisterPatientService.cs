@@ -30,7 +30,7 @@ namespace Application
                 newPatient.EPS = request.EPS;
                 newPatient.Discount = new SearchDiscountByStratumService(_unitOfWork).Ejecute(new SearchDiscountByStratumRequest(){Stratum = newPatient.Stratum}).Discount;
                 _unitOfWork.PatientRepository.Add(newPatient);
-                _unitOfWork.Commit();
+                // _unitOfWork.Commit();
                 return new RegisterPatientResponse(){Mensaje = "Paciente registrado satisfactoriamente"};
             }
             else

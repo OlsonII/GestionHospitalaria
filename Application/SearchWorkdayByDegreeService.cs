@@ -16,10 +16,10 @@ namespace Application
         {
             var workday = _unitOfWork.WorkdayConfigurationRepository.FindFirstOrDefault(s => s.Id == 1);
 
-            return new SearchWorkdayByDegreeResponse(){Workday = SelectDiscountByStratum(request, workday)};
+            return new SearchWorkdayByDegreeResponse(){Workday = SelectWorkday(request, workday)};
         }
 
-        private string SelectDiscountByStratum(SearchWorkdayByDegreeRequest request, WorkdayConfiguration workday)
+        private string SelectWorkday(SearchWorkdayByDegreeRequest request, WorkdayConfiguration workday)
         {
             var newWorkday = "";
             switch (request.Degree)

@@ -13,11 +13,19 @@ namespace ApplicationTest
         [SetUp]
         public void Setup()
         {
-            var optionsInDb = new DbContextOptionsBuilder<MedicalContext>()
+            /*ar optionsInDb = new DbContextOptionsBuilder<MedicalContext>()
                 .UseSqlServer("Server=DESKTOP-N95GP02\\SQLEXPRESS;Database=MedicalServices;Trusted_Connection=True;MultipleActiveResultSets=true")
                 .Options;
 
-            _context = new MedicalContext(optionsInDb);
+            _context = new MedicalContext(optionsInDb);*/
+            
+            var optionsInMemory = new DbContextOptionsBuilder<MedicalContext>().UseInMemoryDatabase("MedicalServices").Options;
+
+            _context = new MedicalContext(optionsInMemory);
+            
+            var registerStratumConfigurationRequest = new RegisterDiscountByStratumRequest(){StratumOne = 0.6, StratumTwo = 0.5, StratumThree = 0.4, StratumFour = 0.0, StratumFive = 0.0, StratumSix = 0.0};
+            var service = new RegisterDiscountByStratumService(new UnitOfWork(_context));
+            service.Ejecute(registerStratumConfigurationRequest);
         }
 
         [Test]

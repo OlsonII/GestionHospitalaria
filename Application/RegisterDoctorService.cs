@@ -31,7 +31,7 @@ namespace Application
                 newDoctor.Experience = request.Experience;
                 newDoctor.Workday = new SearchWorkdayByDegreeService(_unitOfWork).Ejecute(new SearchWorkdayByDegreeRequest(){Degree = newDoctor.Degree}).Workday;
                 _unitOfWork.DoctorRepository.Add(newDoctor);
-                _unitOfWork.Commit();
+                // _unitOfWork.Commit();
                 return new RegisterDoctorResponse(){Mensaje = "Doctor registrado satisfactoriamente"};
             }
             

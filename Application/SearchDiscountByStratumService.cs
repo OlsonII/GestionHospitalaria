@@ -15,7 +15,7 @@ namespace Application
         
         public SearchDiscountByStratumResponse Ejecute(SearchDiscountByStratumRequest request)
         {
-            var discount = _unitOfWork.StratumConfigurationRepository.FindFirstOrDefault(s => s.Id == 2);
+            var discount = _unitOfWork.StratumConfigurationRepository.FindFirstOrDefault(s => s.Id == 1);
 
             return new SearchDiscountByStratumResponse(){Discount = SelectDiscountByStratum(request, discount)};
         }
