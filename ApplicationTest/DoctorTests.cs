@@ -19,9 +19,13 @@ namespace ApplicationTest
             
             _context = new MedicalContext(optionsInDb);*/
             
+            
+            
             var optionsInMemory = new DbContextOptionsBuilder<MedicalContext>().UseInMemoryDatabase("MedicalServices").Options;
 
             _context = new MedicalContext(optionsInMemory);
+            
+            _context.Database.EnsureDeleted();
             
             var registerWorkdayRequest = new RegisterWorkdayByDegreeRequest(){DentistWorkday = "Mañana", DoctorWorkday = "Jornada Completa", OphthalmologistWorkday = "Tarde", PediatricianWorkday = "Mañana"};
             var registerWorkdayService = new RegisterWorkdayByDegreeService(new UnitOfWork(_context));
@@ -34,6 +38,7 @@ namespace ApplicationTest
             var request = new RegisterDoctorRequest{ Identification = "1111", Name = "Doctor", Surname = "Prueba", Age = 30, Degree = "Medico", Experience = 7, Gender = "Masculino"};
             var service = new RegisterDoctorService(new UnitOfWork(_context));
             var response = service.Ejecute(request);
+            
             Assert.AreEqual("Doctor registrado satisfactoriamente", response.Mensaje);
         }
 

@@ -16,15 +16,15 @@ namespace Application
         public RegisterMedicalAppointmentResponse Ejecute(RegisterMedicalAppointmentRequest request)
         {
             MedicalAppointment newMedicalAppointment = null;
-            
-            MedicalAppointment medicalAppointment =
+
+            MedicalAppointment medicalAppointment = 
                 _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Id == request.Identification);
             
             if (medicalAppointment == null)
             {
                 newMedicalAppointment = new MedicalAppointment();
                 newMedicalAppointment.Doctor = new SearchDoctorService(_unitOfWork).Ejecute(new SearchDoctorRequest{Identification = request.Doctor.Id}).Doctor;
-                newMedicalAppointment.Patient = new SearchPatientService(_unitOfWork).Ejecute(new SearchPatientRequest{Identification = request.Patient.Id}).Patient;
+                newMedicalAppointment.Patient = request.Patient; //new SearchPatientService(_unitOfWork).Ejecute(new SearchPatientRequest{Identification = request.Patient.Id}).Patient;
                 newMedicalAppointment.Date = request.Date;
                 newMedicalAppointment.Hour = request.Hour;
                 newMedicalAppointment.Prescription = null;

@@ -23,6 +23,8 @@ namespace ApplicationTest
 
             _context = new MedicalContext(optionsInMemory);
             
+            _context.Database.EnsureDeleted();
+            
             var registerStratumConfigurationRequest = new RegisterDiscountByStratumRequest(){StratumOne = 0.6, StratumTwo = 0.5, StratumThree = 0.4, StratumFour = 0.0, StratumFive = 0.0, StratumSix = 0.0};
             var service = new RegisterDiscountByStratumService(new UnitOfWork(_context));
             service.Ejecute(registerStratumConfigurationRequest);
