@@ -9,21 +9,21 @@ namespace WebApi.Controllers
     [ApiController]
     public class MedicalExamController : ControllerBase
     {
-        readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public MedicalExamController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        
+
         [HttpGet("/{identification}")]
         public ActionResult<MedicalExam> Get(int identification)
         {
             var service = new SearchMedicalExamService(_unitOfWork);
-            var response = service.Ejecute(new SearchMedicalExamRequest(){Identification = identification});
+            var response = service.Ejecute(new SearchMedicalExamRequest {Identification = identification});
             return Ok(response);
         }
-        
+
         [HttpPost]
         public ActionResult<RegisterMedicalExamResponse> Post(RegisterMedicalExamRequest request)
         {
@@ -31,7 +31,7 @@ namespace WebApi.Controllers
             var response = service.Ejecute(request);
             return Ok(response);
         }
-        
+
         [HttpPut("Complete")]
         public ActionResult<CompleteMedicalExamResponse> Post(CompleteMedicalExamRequest request)
         {
@@ -39,7 +39,7 @@ namespace WebApi.Controllers
             var response = service.Ejecute(request);
             return Ok(response);
         }
-        
+
         [HttpPut("Cancel")]
         public ActionResult<CancelMedicalExamResponse> Post(CancelMedicalExamRequest request)
         {
@@ -47,7 +47,7 @@ namespace WebApi.Controllers
             var response = service.Ejecute(request);
             return Ok(response);
         }
-        
+
         [HttpPut("Postpone")]
         public ActionResult<PostponeMedicalExamResponse> Post(PostponeMedicalExamRequest request)
         {

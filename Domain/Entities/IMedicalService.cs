@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Entities
 {
@@ -10,9 +8,8 @@ namespace Domain.Entities
         DateTime Hour { get; set; }
         DateTime Date { get; set; }
         string State { get; set; }
-        double Cost  { get; }
+        double Cost { get; }
 
         void GenerateCost();
-        
     }
 }

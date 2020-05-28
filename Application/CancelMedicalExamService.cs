@@ -1,5 +1,4 @@
 ﻿using Domain.Contracts;
-using Domain.Entities;
 
 namespace Application
 {
@@ -14,24 +13,23 @@ namespace Application
 
         public CancelMedicalExamResponse Ejecute(CancelMedicalExamRequest request)
         {
-            MedicalExam exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Id == request.Identification);
+            var exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Id == request.Identification);
             if (exam != null)
             {
                 exam.CancelExam();
                 _unitOfWork.Commit();
-                return new CancelMedicalExamResponse(){Mensaje = $"Examen cancelado Correctamente"};
+                return new CancelMedicalExamResponse {Mensaje = "Examen cancelado Correctamente"};
             }
-            
-            return new CancelMedicalExamResponse(){Mensaje = $"Error al cancelar el examen"};
+
+            return new CancelMedicalExamResponse {Mensaje = "Error al cancelar el examen"};
         }
-        
     }
 
     public class CancelMedicalExamRequest
     {
         public int Identification { get; set; }
     }
-    
+
     public class CancelMedicalExamResponse
     {
         public string Mensaje { get; set; }

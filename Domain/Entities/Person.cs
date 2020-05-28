@@ -1,5 +1,4 @@
-﻿using System;
-using Domain.Base;
+﻿using Domain.Base;
 
 namespace Domain
 {
@@ -10,8 +9,5 @@ namespace Domain
         public string Surname { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
-
-        public Person() { }
-        
     }
 }

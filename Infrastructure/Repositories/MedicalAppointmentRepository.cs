@@ -11,7 +11,6 @@ namespace Infrastructure.Repositories
     {
         public MedicalAppointmentRepository(IDbContext context) : base(context)
         {
-            
         }
 
         public override IEnumerable<MedicalAppointment> FindBy(Expression<Func<MedicalAppointment, bool>> predicate)

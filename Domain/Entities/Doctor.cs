@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Domain.Base;
-
-namespace Domain.Entities
+﻿namespace Domain.Entities
 {
     public class Doctor : Person
     {
         public int Experience { get; set; }
         public string Degree { get; set; }
         public string Workday { get; set; }
-
-        public Doctor(){}
 
         /*public void GenerateWorkDay() 
         {
@@ -31,6 +24,5 @@ namespace Domain.Entities
                     break;
             }
         }*/
-
     }
 }

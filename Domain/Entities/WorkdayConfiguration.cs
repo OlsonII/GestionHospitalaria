@@ -8,9 +8,5 @@ namespace Domain.Entities
         public string PediatricianWorkday { get; set; }
         public string OphthalmologistWorkday { get; set; }
         public string DentistWorkday { get; set; }
-
-        public WorkdayConfiguration()
-        {
-        }
     }
 }

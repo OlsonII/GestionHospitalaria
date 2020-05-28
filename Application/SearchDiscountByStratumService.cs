@@ -5,19 +5,18 @@ namespace Application
 {
     public class SearchDiscountByStratumService
     {
-        
         private readonly IUnitOfWork _unitOfWork;
 
         public SearchDiscountByStratumService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        
+
         public SearchDiscountByStratumResponse Ejecute(SearchDiscountByStratumRequest request)
         {
             var discount = _unitOfWork.StratumConfigurationRepository.FindFirstOrDefault(s => s.Id == 1);
 
-            return new SearchDiscountByStratumResponse(){Discount = SelectDiscountByStratum(request, discount)};
+            return new SearchDiscountByStratumResponse {Discount = SelectDiscountByStratum(request, discount)};
         }
 
         private double SelectDiscountByStratum(SearchDiscountByStratumRequest request, StratumConfiguration discount)

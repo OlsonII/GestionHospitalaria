@@ -1,6 +1,5 @@
-﻿using Domain.Contracts;
-using Domain.Entities;
-using System;
+﻿using System;
+using Domain.Contracts;
 
 namespace Application
 {
@@ -12,30 +11,29 @@ namespace Application
         {
             _unitOfWork = unitOfWork;
         }
-        
+
         public PostponeMedicalAppointmentResponse Ejecute(PostponeMedicalAppointmentRequest request)
         {
-            MedicalAppointment medicalAppointment =
+            var medicalAppointment =
                 _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Id == request.Identification);
             if (medicalAppointment != null)
             {
                 medicalAppointment.PostponeMedicalAppointment(request.Date, request.Hour);
                 _unitOfWork.Commit();
-                return new PostponeMedicalAppointmentResponse() {Mensaje = "Cita medica aplazada satisfactoriamente"};
+                return new PostponeMedicalAppointmentResponse {Mensaje = "Cita medica aplazada satisfactoriamente"};
             }
-            
-            return new PostponeMedicalAppointmentResponse() {Mensaje = "Error al aplazar la cita medica"};
+
+            return new PostponeMedicalAppointmentResponse {Mensaje = "Error al aplazar la cita medica"};
         }
-        
     }
-    
+
     public class PostponeMedicalAppointmentRequest
     {
         public int Identification { get; set; }
         public DateTime Date { get; set; }
         public DateTime Hour { get; set; }
     }
-    
+
     public class PostponeMedicalAppointmentResponse
     {
         public string Mensaje { get; set; }

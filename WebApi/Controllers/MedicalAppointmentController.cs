@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Application;
 using Domain.Contracts;
 using Domain.Entities;
-using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -13,35 +10,36 @@ namespace WebApi.Controllers
     [ApiController]
     public class MedicalAppointmentController : ControllerBase
     {
-        
-        readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public MedicalAppointmentController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        
+
         [HttpGet]
         public ActionResult<string> Get()
         {
             var service = new SearchMedicalAppointmentService(_unitOfWork);
-            var response = service.Ejecute(new SearchMedicalAppointmentRequest(){DoctorIdentification = null, PatientIdentification = null});
+            var response = service.Ejecute(new SearchMedicalAppointmentRequest
+                {DoctorIdentification = null, PatientIdentification = null});
             return Ok(response);
         }
-        
+
         [HttpGet("patient/{identification}")]
         public ActionResult<List<MedicalAppointment>> GetByPatient(string identification)
         {
             var service = new SearchMedicalAppointmentService(_unitOfWork);
-            var response = service.Ejecute(new SearchMedicalAppointmentRequest(){PatientIdentification = identification});
+            var response = service.Ejecute(new SearchMedicalAppointmentRequest
+                {PatientIdentification = identification});
             return Ok(response);
         }
-        
+
         [HttpGet("doctor/{identification}")]
         public ActionResult<MedicalAppointment> GetByDoctor(string identification)
         {
             var service = new SearchMedicalAppointmentService(_unitOfWork);
-            var response = service.Ejecute(new SearchMedicalAppointmentRequest(){DoctorIdentification = identification});
+            var response = service.Ejecute(new SearchMedicalAppointmentRequest {DoctorIdentification = identification});
             return Ok(response);
         }
 
@@ -52,7 +50,7 @@ namespace WebApi.Controllers
             var response = service.Ejecute(request);
             return Ok(response);
         }
-        
+
         [HttpPut("Complete")]
         public ActionResult<CompleteMedicalAppointmentResponse> PutComplete(CompleteMedicalAppointmentRequest request)
         {
@@ -60,7 +58,7 @@ namespace WebApi.Controllers
             var response = service.Ejecute(request);
             return Ok(response);
         }
-        
+
         [HttpPut("Cancel")]
         public ActionResult<CancelMedicalAppointmentResponse> PutCancel(CancelMedicalAppointmentRequest request)
         {
@@ -68,7 +66,7 @@ namespace WebApi.Controllers
             var response = service.Ejecute(request);
             return Ok(response);
         }
-        
+
         [HttpPut("Postpone")]
         public ActionResult<PostponeMedicalAppointmentResponse> PutPostpone(PostponeMedicalAppointmentRequest request)
         {

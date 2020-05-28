@@ -18,12 +18,12 @@ namespace Application
         {
             if (request.Identification != null)
             {
-                Patient patient =
+                var patient =
                     _unitOfWork.PatientRepository.FindFirstOrDefault(p => p.Id == request.Identification);
-                return new SearchPatientResponse(){Patient = patient};
+                return new SearchPatientResponse {Patient = patient};
             }
-            
-            return new SearchPatientResponse(){Patients = _unitOfWork.PatientRepository.GetAll().ToList()};
+
+            return new SearchPatientResponse {Patients = _unitOfWork.PatientRepository.GetAll().ToList()};
         }
     }
 

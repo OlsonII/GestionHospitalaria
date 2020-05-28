@@ -5,14 +5,13 @@ namespace Application
 {
     public class RegisterDiscountByStratumService
     {
-        
         private readonly IUnitOfWork _unitOfWork;
 
         public RegisterDiscountByStratumService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        
+
         public RegisterDiscountByStratumResponse Ejecute(RegisterDiscountByStratumRequest request)
         {
             var discount = new StratumConfiguration();
@@ -24,7 +23,7 @@ namespace Application
             discount.StratumSix = request.StratumSix;
             _unitOfWork.StratumConfigurationRepository.Add(discount);
             _unitOfWork.Commit();
-            return new RegisterDiscountByStratumResponse(){Message = "Correcto"};
+            return new RegisterDiscountByStratumResponse {Message = "Correcto"};
         }
     }
 

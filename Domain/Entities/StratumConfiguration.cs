@@ -10,9 +10,5 @@ namespace Domain.Entities
         public double StratumFour { get; set; }
         public double StratumFive { get; set; }
         public double StratumSix { get; set; }
-        
-        public StratumConfiguration()
-        {
-        }
     }
 }

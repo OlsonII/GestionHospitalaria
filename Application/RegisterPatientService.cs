@@ -15,7 +15,7 @@ namespace Application
         public RegisterPatientResponse Ejecute(RegisterPatientRequest request)
         {
             Patient newPatient = null;
-            Patient patient =
+            var patient =
                 _unitOfWork.PatientRepository.FindFirstOrDefault(p =>
                     p.Id == request.Identification);
             if (patient == null)
@@ -28,18 +28,17 @@ namespace Application
                 newPatient.Gender = request.Gender;
                 newPatient.Stratum = request.Stratum;
                 newPatient.EPS = request.EPS;
-                newPatient.Discount = new SearchDiscountByStratumService(_unitOfWork).Ejecute(new SearchDiscountByStratumRequest(){Stratum = newPatient.Stratum}).Discount;
+                newPatient.Discount = new SearchDiscountByStratumService(_unitOfWork)
+                    .Ejecute(new SearchDiscountByStratumRequest {Stratum = newPatient.Stratum}).Discount;
                 _unitOfWork.PatientRepository.Add(newPatient);
                 _unitOfWork.Commit();
-                return new RegisterPatientResponse(){Mensaje = "Paciente registrado satisfactoriamente"};
+                return new RegisterPatientResponse {Mensaje = "Paciente registrado satisfactoriamente"};
             }
-            else
-            {
-                return new RegisterPatientResponse(){Mensaje = "Error al registrar el paciente"};
-            }
+
+            return new RegisterPatientResponse {Mensaje = "Error al registrar el paciente"};
         }
     }
-    
+
     public class RegisterPatientRequest
     {
         public string Identification { get; set; }

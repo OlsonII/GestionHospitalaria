@@ -18,14 +18,13 @@ namespace Application
         {
             if (request.Identification != null)
             {
-                Doctor doctor =
+                var doctor =
                     _unitOfWork.DoctorRepository.FindFirstOrDefault(d => d.Id == request.Identification);
-                return new SearchDoctorResponse(){Doctor = doctor};
+                return new SearchDoctorResponse {Doctor = doctor};
             }
-            
-            return new SearchDoctorResponse(){Doctors = _unitOfWork.DoctorRepository.GetAll().ToList()};
+
+            return new SearchDoctorResponse {Doctors = _unitOfWork.DoctorRepository.GetAll().ToList()};
         }
-        
     }
 
     public class SearchDoctorRequest

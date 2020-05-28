@@ -1,5 +1,4 @@
-﻿using System;
-using Domain.Contracts;
+﻿using Domain.Contracts;
 using Domain.Entities;
 
 namespace Application
@@ -16,7 +15,7 @@ namespace Application
         public RegisterDoctorResponse Ejecute(RegisterDoctorRequest request)
         {
             Doctor newDoctor = null;
-            Doctor doctor =
+            var doctor =
                 _unitOfWork.DoctorRepository.FindFirstOrDefault(d =>
                     d.Id == request.Identification);
             if (doctor == null)
@@ -29,13 +28,14 @@ namespace Application
                 newDoctor.Gender = request.Gender;
                 newDoctor.Degree = request.Degree;
                 newDoctor.Experience = request.Experience;
-                newDoctor.Workday = new SearchWorkdayByDegreeService(_unitOfWork).Ejecute(new SearchWorkdayByDegreeRequest(){Degree = newDoctor.Degree}).Workday;
+                newDoctor.Workday = new SearchWorkdayByDegreeService(_unitOfWork)
+                    .Ejecute(new SearchWorkdayByDegreeRequest {Degree = newDoctor.Degree}).Workday;
                 _unitOfWork.DoctorRepository.Add(newDoctor);
                 _unitOfWork.Commit();
-                return new RegisterDoctorResponse(){Mensaje = "Doctor registrado satisfactoriamente"};
+                return new RegisterDoctorResponse {Mensaje = "Doctor registrado satisfactoriamente"};
             }
-            
-            return new RegisterDoctorResponse(){Mensaje = "El doctor que intenta registrar ya existe"};
+
+            return new RegisterDoctorResponse {Mensaje = "El doctor que intenta registrar ya existe"};
         }
     }
 

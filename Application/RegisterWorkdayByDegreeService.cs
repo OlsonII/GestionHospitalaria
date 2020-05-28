@@ -11,7 +11,7 @@ namespace Application
         {
             _unitOfWork = unitOfWork;
         }
-        
+
         public RegisterWorkdayByDegreeResponse Ejecute(RegisterWorkdayByDegreeRequest request)
         {
             var workday = new WorkdayConfiguration();
@@ -21,7 +21,7 @@ namespace Application
             workday.PediatricianWorkday = request.PediatricianWorkday;
             _unitOfWork.WorkdayConfigurationRepository.Add(workday);
             _unitOfWork.Commit();
-            return new RegisterWorkdayByDegreeResponse(){Message = "Correcto"};
+            return new RegisterWorkdayByDegreeResponse {Message = "Correcto"};
         }
     }
 

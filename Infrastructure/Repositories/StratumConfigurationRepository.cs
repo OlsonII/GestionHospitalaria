@@ -4,7 +4,8 @@ using Infrastructure.Base;
 
 namespace Infrastructure.Repositories
 {
-    public class StratumConfigurationRepository : GenericRepository<StratumConfiguration>, IStratumConfigurationRepository
+    public class StratumConfigurationRepository : GenericRepository<StratumConfiguration>,
+        IStratumConfigurationRepository
     {
         public StratumConfigurationRepository(IDbContext context) : base(context)
         {

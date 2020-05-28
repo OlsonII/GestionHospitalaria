@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Infrastructure.Base
@@ -10,7 +9,7 @@ namespace Infrastructure.Base
         EntityEntry Entry(object entity);
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         void SetModified(object entity);
-        
+
         int SaveChanges();
     }
 
@@ -18,9 +17,8 @@ namespace Infrastructure.Base
     {
         public DbContextBase(DbContextOptions options) : base(options)
         {
-            
         }
-        
+
         public void SetModified(object entity)
         {
             Entry(entity).State = EntityState.Modified;

@@ -16,7 +16,7 @@ namespace Application
         public RegisterMedicalExamResponse Ejecute(RegisterMedicalExamRequest request)
         {
             MedicalExam newExam = null;
-            MedicalExam exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Id == request.Identification);
+            var exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Id == request.Identification);
             if (exam == null)
             {
                 newExam = new MedicalExam();
@@ -29,16 +29,13 @@ namespace Application
                 newExam.GenerateCost();
                 _unitOfWork.MedicalExamRepository.Add(newExam);
                 _unitOfWork.Commit();
-                return new RegisterMedicalExamResponse() {Mensaje = "Examen medico creado satisfactoriamente"};
+                return new RegisterMedicalExamResponse {Mensaje = "Examen medico creado satisfactoriamente"};
             }
-            else
-            {
-                return new RegisterMedicalExamResponse() {Mensaje = "Error al registrar el examen medico"};
-            }
+
+            return new RegisterMedicalExamResponse {Mensaje = "Error al registrar el examen medico"};
         }
-        
     }
-    
+
     public class RegisterMedicalExamRequest
     {
         public int Identification { get; set; }
@@ -47,7 +44,7 @@ namespace Application
         public DateTime Hour { get; set; }
         public DateTime Date { get; set; }
     }
-    
+
     public class RegisterMedicalExamResponse
     {
         public string Mensaje { get; set; }

@@ -1,6 +1,6 @@
-using NUnit.Framework;
-using Domain.Entities;
 using System;
+using Domain.Entities;
+using NUnit.Framework;
 
 namespace DomainTest
 {
@@ -14,7 +14,7 @@ namespace DomainTest
         [Test]
         public void RegisterMedicalAppointmentCorrect()
         {
-            Doctor doctor = new Doctor();
+            var doctor = new Doctor();
             doctor.Id = "1065";
             doctor.Name = "Juan";
             doctor.Surname = "Robledo";
@@ -24,7 +24,7 @@ namespace DomainTest
             doctor.Degree = "Medico";
             doctor.Workday = "Jornada Completa";
 
-            Patient patient = new Patient();
+            var patient = new Patient();
             patient.Id = "1066";
             patient.Name = "Pedro";
             patient.Surname = "Salcedo";
@@ -34,7 +34,7 @@ namespace DomainTest
             patient.Stratum = 2;
             patient.Discount = 0.6;
 
-            MedicalAppointment medicalAppointment = new MedicalAppointment();
+            var medicalAppointment = new MedicalAppointment();
             medicalAppointment.Date = DateTime.Now.AddDays(10);
             medicalAppointment.Hour = medicalAppointment.Date.AddHours(8);
             medicalAppointment.Doctor = doctor;
@@ -47,7 +47,7 @@ namespace DomainTest
         [Test]
         public void CompleteMedicalAppointmentCorrect()
         {
-            Doctor doctor = new Doctor();
+            var doctor = new Doctor();
             doctor.Id = "1065";
             doctor.Name = "Juan";
             doctor.Surname = "Robledo";
@@ -57,7 +57,7 @@ namespace DomainTest
             doctor.Degree = "Medico";
             doctor.Workday = "Jornada Completa";
 
-            Patient patient = new Patient();
+            var patient = new Patient();
             patient.Id = "1066";
             patient.Name = "Pedro";
             patient.Surname = "Salcedo";
@@ -67,14 +67,14 @@ namespace DomainTest
             patient.Stratum = 2;
             patient.Discount = 0.6;
 
-            MedicalAppointment medicalAppointment = new MedicalAppointment();
+            var medicalAppointment = new MedicalAppointment();
             medicalAppointment.Date = DateTime.Now.AddDays(10);
             medicalAppointment.Hour = medicalAppointment.Date.AddHours(8);
             medicalAppointment.Doctor = doctor;
             medicalAppointment.Patient = patient;
             medicalAppointment.GenerateCost();
 
-            Prescription prescription = new Prescription();
+            var prescription = new Prescription();
 
             medicalAppointment.CompleteMedicalAppointment(prescription);
 
@@ -84,7 +84,7 @@ namespace DomainTest
         [Test]
         public void CancelMedicalAppointmentCorrect()
         {
-            Doctor doctor = new Doctor();
+            var doctor = new Doctor();
             doctor.Id = "1065";
             doctor.Name = "Juan";
             doctor.Surname = "Robledo";
@@ -94,7 +94,7 @@ namespace DomainTest
             doctor.Degree = "Medico";
             doctor.Workday = "Jornada Completa";
 
-            Patient patient = new Patient();
+            var patient = new Patient();
             patient.Id = "1066";
             patient.Name = "Pedro";
             patient.Surname = "Salcedo";
@@ -104,14 +104,14 @@ namespace DomainTest
             patient.Stratum = 2;
             patient.Discount = 0.6;
 
-            MedicalAppointment medicalAppointment = new MedicalAppointment();
+            var medicalAppointment = new MedicalAppointment();
             medicalAppointment.Date = DateTime.Now.AddDays(10);
             medicalAppointment.Hour = medicalAppointment.Date.AddHours(8);
             medicalAppointment.Doctor = doctor;
             medicalAppointment.Patient = patient;
             medicalAppointment.GenerateCost();
 
-            Prescription prescription = new Prescription();
+            var prescription = new Prescription();
 
             medicalAppointment.CancelMedicalAppointment();
 
@@ -121,7 +121,7 @@ namespace DomainTest
         [Test]
         public void PostponeMedicalAppointmentCorrect()
         {
-            Doctor doctor = new Doctor();
+            var doctor = new Doctor();
             doctor.Id = "1065";
             doctor.Name = "Juan";
             doctor.Surname = "Robledo";
@@ -131,7 +131,7 @@ namespace DomainTest
             doctor.Degree = "Medico";
             doctor.Workday = "Jornada Completa";
 
-            Patient patient = new Patient();
+            var patient = new Patient();
             patient.Id = "1066";
             patient.Name = "Pedro";
             patient.Surname = "Salcedo";
@@ -141,14 +141,14 @@ namespace DomainTest
             patient.Stratum = 2;
             patient.Discount = 0.6;
 
-            MedicalAppointment medicalAppointment = new MedicalAppointment();
+            var medicalAppointment = new MedicalAppointment();
             medicalAppointment.Date = DateTime.Now.AddDays(10);
             medicalAppointment.Hour = medicalAppointment.Date.AddHours(8);
             medicalAppointment.Doctor = doctor;
             medicalAppointment.Patient = patient;
             medicalAppointment.GenerateCost();
 
-            Prescription prescription = new Prescription();
+            var prescription = new Prescription();
 
             medicalAppointment.PostponeMedicalAppointment(medicalAppointment.Date.AddDays(5), medicalAppointment.Date);
 

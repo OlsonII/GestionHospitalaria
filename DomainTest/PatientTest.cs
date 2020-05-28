@@ -1,5 +1,5 @@
-using NUnit.Framework;
 using Domain.Entities;
+using NUnit.Framework;
 
 namespace DomainTest
 {
@@ -13,7 +13,7 @@ namespace DomainTest
         [Test]
         public void GenerateDiscountPatientCorrect()
         {
-            Patient patient = new Patient();
+            var patient = new Patient();
             patient.Id = "1065";
             patient.Name = "Juan";
             patient.Surname = "Robledo";

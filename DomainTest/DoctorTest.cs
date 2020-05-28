@@ -1,5 +1,5 @@
-using NUnit.Framework;
 using Domain.Entities;
+using NUnit.Framework;
 
 namespace DomainTest
 {
@@ -13,7 +13,7 @@ namespace DomainTest
         [Test]
         public void GenerateWorkdayPediatricianCorrect()
         {
-            Doctor doctor = new Doctor();
+            var doctor = new Doctor();
             doctor.Id = "1065";
             doctor.Name = "Juan";
             doctor.Surname = "Robledo";
@@ -28,7 +28,7 @@ namespace DomainTest
         [Test]
         public void GenerateWorkdayDoctorCorrect()
         {
-            Doctor doctor = new Doctor();
+            var doctor = new Doctor();
             doctor.Id = "1065";
             doctor.Name = "Juan";
             doctor.Surname = "Robledo";
@@ -43,7 +43,7 @@ namespace DomainTest
         [Test]
         public void GenerateWorkdayOphthalmologistCorrect()
         {
-            Doctor doctor = new Doctor();
+            var doctor = new Doctor();
             doctor.Id = "1065";
             doctor.Name = "Juan";
             doctor.Surname = "Robledo";
@@ -58,7 +58,7 @@ namespace DomainTest
         [Test]
         public void GenerateWorkdayDentistCorrect()
         {
-            Doctor doctor = new Doctor();
+            var doctor = new Doctor();
             doctor.Id = "1065";
             doctor.Name = "Juan";
             doctor.Surname = "Robledo";

@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Domain.Base;
+﻿using Domain.Base;
 
 namespace Domain.Entities
 {
     public class Medicine : Entity<int>
     {
-        public override int Id { get; set; }
-        public string Name { get; set; }
-        public int Quantity { get; set; }
-        public double Periodicity { get; set; }
-
         public Medicine()
         {
         }
@@ -22,5 +14,10 @@ namespace Domain.Entities
             Quantity = quantity;
             Periodicity = periodicity;
         }
+
+        public override int Id { get; set; }
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+        public double Periodicity { get; set; }
     }
 }

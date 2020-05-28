@@ -1,17 +1,10 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Domain.Entities
+﻿namespace Domain.Entities
 {
     public class Patient : Person
     {
         public string EPS { get; set; }
         public int Stratum { get; set; }
         public double Discount { get; set; }
-
-        public Patient(){}
 
         /*public void GenerateDiscount() 
         {
@@ -37,6 +30,5 @@ namespace Domain.Entities
                     break;
             }            
         }*/
-
     }
 }

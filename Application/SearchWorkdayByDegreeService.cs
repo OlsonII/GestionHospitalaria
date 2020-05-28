@@ -11,12 +11,12 @@ namespace Application
         {
             _unitOfWork = unitOfWork;
         }
-        
+
         public SearchWorkdayByDegreeResponse Ejecute(SearchWorkdayByDegreeRequest request)
         {
             var workday = _unitOfWork.WorkdayConfigurationRepository.FindFirstOrDefault(s => s.Id == 1);
 
-            return new SearchWorkdayByDegreeResponse(){Workday = SelectWorkday(request, workday)};
+            return new SearchWorkdayByDegreeResponse {Workday = SelectWorkday(request, workday)};
         }
 
         private string SelectWorkday(SearchWorkdayByDegreeRequest request, WorkdayConfiguration workday)
@@ -51,5 +51,4 @@ namespace Application
     {
         public string Workday { get; set; }
     }
-    
 }

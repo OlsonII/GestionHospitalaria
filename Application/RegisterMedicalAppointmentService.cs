@@ -17,14 +17,16 @@ namespace Application
         {
             MedicalAppointment newMedicalAppointment = null;
 
-            MedicalAppointment medicalAppointment = 
+            var medicalAppointment =
                 _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Id == request.Identification);
-            
+
             if (medicalAppointment == null)
             {
                 newMedicalAppointment = new MedicalAppointment();
-                newMedicalAppointment.Doctor = new SearchDoctorService(_unitOfWork).Ejecute(new SearchDoctorRequest{Identification = request.Doctor.Id}).Doctor;
-                newMedicalAppointment.Patient = request.Patient; //new SearchPatientService(_unitOfWork).Ejecute(new SearchPatientRequest{Identification = request.Patient.Id}).Patient;
+                newMedicalAppointment.Doctor = new SearchDoctorService(_unitOfWork)
+                    .Ejecute(new SearchDoctorRequest {Identification = request.Doctor.Id}).Doctor;
+                newMedicalAppointment.Patient =
+                    request.Patient; //new SearchPatientService(_unitOfWork).Ejecute(new SearchPatientRequest{Identification = request.Patient.Id}).Patient;
                 newMedicalAppointment.Date = request.Date;
                 newMedicalAppointment.Hour = request.Hour;
                 newMedicalAppointment.Prescription = null;
@@ -32,12 +34,10 @@ namespace Application
                 newMedicalAppointment.GenerateCost();
                 _unitOfWork.MedicalAppointmentRepository.Add(newMedicalAppointment);
                 _unitOfWork.Commit();
-                return new RegisterMedicalAppointmentResponse() {Mensaje = "Cita medica creada satisfactoriamente"};
+                return new RegisterMedicalAppointmentResponse {Mensaje = "Cita medica creada satisfactoriamente"};
             }
-            else
-            {
-                return new RegisterMedicalAppointmentResponse() {Mensaje = "Error al crear la cita medica"};
-            }
+
+            return new RegisterMedicalAppointmentResponse {Mensaje = "Error al crear la cita medica"};
         }
     }
 
@@ -49,7 +49,7 @@ namespace Application
         public DateTime Hour { get; set; }
         public DateTime Date { get; set; }
     }
-    
+
     public class RegisterMedicalAppointmentResponse
     {
         public string Mensaje { get; set; }

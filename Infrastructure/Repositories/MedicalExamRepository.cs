@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using Domain.Entities;
+﻿using Domain.Entities;
 using Domain.Repositories;
 using Infrastructure.Base;
 
@@ -12,7 +8,6 @@ namespace Infrastructure.Repositories
     {
         public MedicalExamRepository(IDbContext context) : base(context)
         {
-            
         }
     }
 }

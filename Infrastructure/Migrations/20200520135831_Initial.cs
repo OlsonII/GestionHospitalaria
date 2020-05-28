@@ -8,224 +8,209 @@ namespace Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Doctors",
-                columns: table => new
+                "Doctors",
+                table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Age = table.Column<int>(type: "int", nullable: false),
-                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Experience = table.Column<int>(type: "int", nullable: false),
-                    Degree = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Workday = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<string>("nvarchar(450)", nullable: false),
+                    Name = table.Column<string>("nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>("nvarchar(max)", nullable: true),
+                    Age = table.Column<int>("int", nullable: false),
+                    Gender = table.Column<string>("nvarchar(max)", nullable: true),
+                    Experience = table.Column<int>("int", nullable: false),
+                    Degree = table.Column<string>("nvarchar(max)", nullable: true),
+                    Workday = table.Column<string>("nvarchar(max)", nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Doctors", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Doctors", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "Patients",
-                columns: table => new
+                "Patients",
+                table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Age = table.Column<int>(type: "int", nullable: false),
-                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EPS = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Stratum = table.Column<int>(type: "int", nullable: false),
-                    Discount = table.Column<double>(type: "float", nullable: false)
+                    Id = table.Column<string>("nvarchar(450)", nullable: false),
+                    Name = table.Column<string>("nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>("nvarchar(max)", nullable: true),
+                    Age = table.Column<int>("int", nullable: false),
+                    Gender = table.Column<string>("nvarchar(max)", nullable: true),
+                    EPS = table.Column<string>("nvarchar(max)", nullable: true),
+                    Stratum = table.Column<int>("int", nullable: false),
+                    Discount = table.Column<double>("float", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Patients", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Patients", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "Prescriptions",
-                columns: table => new
+                "Prescriptions",
+                table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>("int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CreationDate = table.Column<DateTime>("datetime2", nullable: false),
+                    ExpirationDate = table.Column<DateTime>("datetime2", nullable: false),
+                    State = table.Column<string>("nvarchar(max)", nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Prescriptions", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Prescriptions", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "StratumConfigurations",
-                columns: table => new
+                "StratumConfigurations",
+                table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>("int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StratumOne = table.Column<double>(type: "float", nullable: false),
-                    StratumTwo = table.Column<double>(type: "float", nullable: false),
-                    StratumThree = table.Column<double>(type: "float", nullable: false),
-                    StratumFour = table.Column<double>(type: "float", nullable: false),
-                    StratumFive = table.Column<double>(type: "float", nullable: false),
-                    StratumSix = table.Column<double>(type: "float", nullable: false)
+                    StratumOne = table.Column<double>("float", nullable: false),
+                    StratumTwo = table.Column<double>("float", nullable: false),
+                    StratumThree = table.Column<double>("float", nullable: false),
+                    StratumFour = table.Column<double>("float", nullable: false),
+                    StratumFive = table.Column<double>("float", nullable: false),
+                    StratumSix = table.Column<double>("float", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_StratumConfigurations", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_StratumConfigurations", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "WorkdayConfigurations",
-                columns: table => new
+                "WorkdayConfigurations",
+                table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>("int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DoctorWorkday = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PediatricianWorkday = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OphthalmologistWorkday = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DentistWorkday = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    DoctorWorkday = table.Column<string>("nvarchar(max)", nullable: true),
+                    PediatricianWorkday = table.Column<string>("nvarchar(max)", nullable: true),
+                    OphthalmologistWorkday = table.Column<string>("nvarchar(max)", nullable: true),
+                    DentistWorkday = table.Column<string>("nvarchar(max)", nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_WorkdayConfigurations", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_WorkdayConfigurations", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "MedicalExams",
-                columns: table => new
+                "MedicalExams",
+                table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>("int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Hour = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PatientId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Cost = table.Column<double>(type: "float", nullable: false)
+                    Name = table.Column<string>("nvarchar(max)", nullable: true),
+                    Date = table.Column<DateTime>("datetime2", nullable: false),
+                    Hour = table.Column<DateTime>("datetime2", nullable: false),
+                    PatientId = table.Column<string>("nvarchar(450)", nullable: true),
+                    State = table.Column<string>("nvarchar(max)", nullable: true),
+                    Cost = table.Column<double>("float", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MedicalExams", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MedicalExams_Patients_PatientId",
-                        column: x => x.PatientId,
-                        principalTable: "Patients",
-                        principalColumn: "Id",
+                        "FK_MedicalExams_Patients_PatientId",
+                        x => x.PatientId,
+                        "Patients",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MedicalAppointments",
-                columns: table => new
+                "MedicalAppointments",
+                table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>("int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DoctorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    PatientId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Hour = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PrescriptionId = table.Column<int>(type: "int", nullable: true),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Cost = table.Column<double>(type: "float", nullable: false)
+                    DoctorId = table.Column<string>("nvarchar(450)", nullable: true),
+                    PatientId = table.Column<string>("nvarchar(450)", nullable: true),
+                    Hour = table.Column<DateTime>("datetime2", nullable: false),
+                    Date = table.Column<DateTime>("datetime2", nullable: false),
+                    PrescriptionId = table.Column<int>("int", nullable: true),
+                    State = table.Column<string>("nvarchar(max)", nullable: true),
+                    Cost = table.Column<double>("float", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MedicalAppointments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MedicalAppointments_Doctors_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctors",
-                        principalColumn: "Id",
+                        "FK_MedicalAppointments_Doctors_DoctorId",
+                        x => x.DoctorId,
+                        "Doctors",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_MedicalAppointments_Patients_PatientId",
-                        column: x => x.PatientId,
-                        principalTable: "Patients",
-                        principalColumn: "Id",
+                        "FK_MedicalAppointments_Patients_PatientId",
+                        x => x.PatientId,
+                        "Patients",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_MedicalAppointments_Prescriptions_PrescriptionId",
-                        column: x => x.PrescriptionId,
-                        principalTable: "Prescriptions",
-                        principalColumn: "Id",
+                        "FK_MedicalAppointments_Prescriptions_PrescriptionId",
+                        x => x.PrescriptionId,
+                        "Prescriptions",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Medicine",
-                columns: table => new
+                "Medicine",
+                table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>("int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    Periodicity = table.Column<double>(type: "float", nullable: false),
-                    PrescriptionId = table.Column<int>(type: "int", nullable: true)
+                    Name = table.Column<string>("nvarchar(max)", nullable: true),
+                    Quantity = table.Column<int>("int", nullable: false),
+                    Periodicity = table.Column<double>("float", nullable: false),
+                    PrescriptionId = table.Column<int>("int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Medicine", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Medicine_Prescriptions_PrescriptionId",
-                        column: x => x.PrescriptionId,
-                        principalTable: "Prescriptions",
-                        principalColumn: "Id",
+                        "FK_Medicine_Prescriptions_PrescriptionId",
+                        x => x.PrescriptionId,
+                        "Prescriptions",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_MedicalAppointments_DoctorId",
-                table: "MedicalAppointments",
-                column: "DoctorId");
+                "IX_MedicalAppointments_DoctorId",
+                "MedicalAppointments",
+                "DoctorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MedicalAppointments_PatientId",
-                table: "MedicalAppointments",
-                column: "PatientId");
+                "IX_MedicalAppointments_PatientId",
+                "MedicalAppointments",
+                "PatientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MedicalAppointments_PrescriptionId",
-                table: "MedicalAppointments",
-                column: "PrescriptionId");
+                "IX_MedicalAppointments_PrescriptionId",
+                "MedicalAppointments",
+                "PrescriptionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MedicalExams_PatientId",
-                table: "MedicalExams",
-                column: "PatientId");
+                "IX_MedicalExams_PatientId",
+                "MedicalExams",
+                "PatientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Medicine_PrescriptionId",
-                table: "Medicine",
-                column: "PrescriptionId");
+                "IX_Medicine_PrescriptionId",
+                "Medicine",
+                "PrescriptionId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MedicalAppointments");
+                "MedicalAppointments");
 
             migrationBuilder.DropTable(
-                name: "MedicalExams");
+                "MedicalExams");
 
             migrationBuilder.DropTable(
-                name: "Medicine");
+                "Medicine");
 
             migrationBuilder.DropTable(
-                name: "StratumConfigurations");
+                "StratumConfigurations");
 
             migrationBuilder.DropTable(
-                name: "WorkdayConfigurations");
+                "WorkdayConfigurations");
 
             migrationBuilder.DropTable(
-                name: "Doctors");
+                "Doctors");
 
             migrationBuilder.DropTable(
-                name: "Patients");
+                "Patients");
 
             migrationBuilder.DropTable(
-                name: "Prescriptions");
+                "Prescriptions");
         }
     }
 }

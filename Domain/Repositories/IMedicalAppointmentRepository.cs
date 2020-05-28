@@ -5,6 +5,5 @@ namespace Domain.Repositories
 {
     public interface IMedicalAppointmentRepository : IGenericRepository<MedicalAppointment>
     {
-        
     }
 }
