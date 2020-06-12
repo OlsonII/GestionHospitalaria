@@ -1,7 +1,7 @@
 node {
 
   stage('Checkout') {
-    url: 'git@github.com:Ivancontry/CreditoPrueba.git',branch: 'master'
+    url: 'https://github.com/OlsonII/GestionHospitalaria',branch: 'master'
   }
   //SignusFinanciero.sln
   stage ('Restore Nuget') {
