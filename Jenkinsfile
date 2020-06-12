@@ -1,11 +1,11 @@
 node {
 
   stage('Checkout') {
-    url: 'https://github.com/OlsonII/GestionHospitalaria',branch: 'master'
+    git url: 'https://github.com/OlsonII/GestionHospitalaria',branch: 'master'
   }
-  //SignusFinanciero.sln
+  
   stage ('Restore Nuget') {
-    bat "dotnet restore GestionHospitalaria.sln -s http://byanugetserver.azurewebsites.net/nuget -s https://api.nuget.org/v3/index.json"
+    bat "dotnet restore GestionHospitalaria.sln"
   }
   
   stage('Clean') {
