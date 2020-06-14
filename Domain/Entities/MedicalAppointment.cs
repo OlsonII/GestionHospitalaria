@@ -13,8 +13,9 @@ namespace Domain.Entities
 
         public Prescription Prescription { get; set; }
         public Patient Patient { get; set; }
-        public DateTime Hour { get; set; }
         public DateTime Date { get; set; }
+        public int Turn { get; set; }
+        public string Time { get; set; }
         public string State { get; set; }
         public double Cost { get; private set; }
 
@@ -35,11 +36,11 @@ namespace Domain.Entities
             State = "Cancelada";
         }
 
-        public void PostponeMedicalAppointment(DateTime date, DateTime hour)
+        public void PostponeMedicalAppointment(DateTime date, int turn)
         {
             State = "Aplazada";
             Date = date;
-            Hour = hour;
+            Turn = turn;
         }
     }
 }

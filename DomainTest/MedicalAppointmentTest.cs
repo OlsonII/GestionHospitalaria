@@ -36,7 +36,7 @@ namespace DomainTest
 
             var medicalAppointment = new MedicalAppointment();
             medicalAppointment.Date = DateTime.Now.AddDays(10);
-            medicalAppointment.Hour = medicalAppointment.Date.AddHours(8);
+            medicalAppointment.Time = doctor.Workday;
             medicalAppointment.Doctor = doctor;
             medicalAppointment.Patient = patient;
             medicalAppointment.GenerateCost();
@@ -69,7 +69,7 @@ namespace DomainTest
 
             var medicalAppointment = new MedicalAppointment();
             medicalAppointment.Date = DateTime.Now.AddDays(10);
-            medicalAppointment.Hour = medicalAppointment.Date.AddHours(8);
+            medicalAppointment.Time = doctor.Workday;
             medicalAppointment.Doctor = doctor;
             medicalAppointment.Patient = patient;
             medicalAppointment.GenerateCost();
@@ -106,7 +106,7 @@ namespace DomainTest
 
             var medicalAppointment = new MedicalAppointment();
             medicalAppointment.Date = DateTime.Now.AddDays(10);
-            medicalAppointment.Hour = medicalAppointment.Date.AddHours(8);
+            medicalAppointment.Time = doctor.Workday;
             medicalAppointment.Doctor = doctor;
             medicalAppointment.Patient = patient;
             medicalAppointment.GenerateCost();
@@ -143,14 +143,14 @@ namespace DomainTest
 
             var medicalAppointment = new MedicalAppointment();
             medicalAppointment.Date = DateTime.Now.AddDays(10);
-            medicalAppointment.Hour = medicalAppointment.Date.AddHours(8);
+            medicalAppointment.Time = doctor.Workday;
             medicalAppointment.Doctor = doctor;
             medicalAppointment.Patient = patient;
             medicalAppointment.GenerateCost();
 
             var prescription = new Prescription();
 
-            medicalAppointment.PostponeMedicalAppointment(medicalAppointment.Date.AddDays(5), medicalAppointment.Date);
+            medicalAppointment.PostponeMedicalAppointment(medicalAppointment.Date.AddDays(5), 2);
 
             Assert.AreEqual("Aplazada", medicalAppointment.State);
         }

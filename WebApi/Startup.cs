@@ -26,19 +26,19 @@ namespace WebApi
         {
             services.AddDbContext<MedicalContext>(opt =>
                 opt.UseSqlServer(
-                    "Server=DESKTOP-N95GP02\\SQLEXPRESS01;Database=MedicalServices;Trusted_Connection=True;MultipleActiveResultSets=true"));
+                    "Server=DESKTOP-P0VKO62\\SQLEXPRESS;Database=MedicalServices;Trusted_Connection=True;MultipleActiveResultSets=true"));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IDbContext, MedicalContext>();
 
             services.AddCors(options =>
                 {
-                    options.AddPolicy("Flutter",
+                    options.AddDefaultPolicy(
                         builder =>
                         {
-                            builder.WithOrigins("http://localhost").AllowAnyOrigin().WithMethods("PUT", "POST", "GET");
-                            builder.WithOrigins("http://192.168.0.28").AllowAnyOrigin()
-                                .WithMethods("PUT", "POST", "GET");
+                            /*builder.WithOrigins("http://localhost").AllowAnyOrigin().AllowAnyMethod();
+                            builder.WithOrigins("http://192.168.0.28").AllowAnyOrigin().AllowAnyMethod();*/
+                            builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                         });
                 }
             );
@@ -79,7 +79,7 @@ namespace WebApi
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
-            app.UseCors("Flutter");
+            app.UseCors();
             app.UseRouting();
 
             app.UseAuthorization();

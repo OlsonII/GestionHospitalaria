@@ -28,8 +28,7 @@ namespace Application
                 newDoctor.Gender = request.Gender;
                 newDoctor.Degree = request.Degree;
                 newDoctor.Experience = request.Experience;
-                newDoctor.Workday = new SearchWorkdayByDegreeService(_unitOfWork)
-                    .Ejecute(new SearchWorkdayByDegreeRequest {Degree = newDoctor.Degree}).Workday;
+                newDoctor.Workday = request.Workday;
                 _unitOfWork.DoctorRepository.Add(newDoctor);
                 _unitOfWork.Commit();
                 return new RegisterDoctorResponse {Mensaje = "Doctor registrado satisfactoriamente"};
@@ -47,6 +46,7 @@ namespace Application
         public int Age { get; set; }
         public string Gender { get; set; }
         public int Experience { get; set; }
+        public string Workday { get; set; }
         public string Degree { get; set; }
     }
 

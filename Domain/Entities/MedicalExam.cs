@@ -9,7 +9,8 @@ namespace Domain.Entities
         public override int Id { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
-        public DateTime Hour { get; set; }
+        public int Turn { get; set; }
+        public string Time { get; set; }
         public Patient Patient { get; set; }
         public string State { get; set; }
         public double Cost { get; private set; }
@@ -31,11 +32,11 @@ namespace Domain.Entities
             State = "Cancelado";
         }
 
-        public void PostponeExam(DateTime date, DateTime hour)
+        public void PostponeExam(DateTime date, int turn)
         {
             State = "Aplazado";
             Date = date;
-            Hour = hour;
+            Turn = turn;
         }
     }
 }

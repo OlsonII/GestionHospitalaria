@@ -26,14 +26,6 @@ namespace ApplicationTest
             _context = new MedicalContext(optionsInMemory);
 
             _context.Database.EnsureDeleted();
-
-            var registerWorkdayRequest = new RegisterWorkdayByDegreeRequest
-            {
-                DentistWorkday = "Mañana", DoctorWorkday = "Jornada Completa", OphthalmologistWorkday = "Tarde",
-                PediatricianWorkday = "Mañana"
-            };
-            var registerWorkdayService = new RegisterWorkdayByDegreeService(new UnitOfWork(_context));
-            registerWorkdayService.Ejecute(registerWorkdayRequest);
         }
 
         [Test]

@@ -30,7 +30,6 @@ namespace Application
     {
         public int Identification { get; set; }
         public DateTime Date { get; set; }
-        public DateTime Hour { get; set; }
     }
 
     public class PostponeMedicalExamResponse

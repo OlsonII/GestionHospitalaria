@@ -33,7 +33,7 @@ namespace ApplicationTest
         public void RegisterMedicalExamTest()
         {
             var request = new RegisterMedicalExamRequest
-                {Patient = new Patient {Id = "1004", Stratum = 2}, Date = DateTime.Now, Hour = DateTime.Now.Date};
+                {Patient = new Patient {Id = "1004", Stratum = 2}, Date = DateTime.Now};
             var service = new RegisterMedicalExamService(new UnitOfWork(_context));
             var response = service.Ejecute(request);
             Assert.AreEqual("Examen medico creado satisfactoriamente", response.Mensaje);
@@ -43,7 +43,7 @@ namespace ApplicationTest
         public void CompleteMedicalAppointmentTest()
         {
             var requestA = new RegisterMedicalExamRequest
-                {Patient = new Patient {Id = "1004", Stratum = 2}, Date = DateTime.Now, Hour = DateTime.Now.Date};
+                {Patient = new Patient {Id = "1004", Stratum = 2}, Date = DateTime.Now};
             var serviceA = new RegisterMedicalExamService(new UnitOfWork(_context));
             serviceA.Ejecute(requestA);
 
@@ -57,12 +57,12 @@ namespace ApplicationTest
         public void PostponeMedicalAppointmentTest()
         {
             var requestA = new RegisterMedicalExamRequest
-                {Patient = new Patient {Id = "1004", Stratum = 2}, Date = DateTime.Now, Hour = DateTime.Now.Date};
+                {Patient = new Patient {Id = "1004", Stratum = 2}, Date = DateTime.Now};
             var serviceA = new RegisterMedicalExamService(new UnitOfWork(_context));
             serviceA.Ejecute(requestA);
 
             var request = new PostponeMedicalExamRequest
-                {Identification = 1, Date = DateTime.Now.AddDays(3), Hour = DateTime.Now.Date.AddHours(14)};
+                {Identification = 1, Date = DateTime.Now.AddDays(3)};
             var service = new PostponeMedicalExamService(new UnitOfWork(_context));
             var response = service.Ejecute(request);
             Assert.AreEqual("Examen aplazado Correctamente", response.Mensaje);
@@ -72,7 +72,7 @@ namespace ApplicationTest
         public void CancelMedicalAppointmentTest()
         {
             var requestA = new RegisterMedicalExamRequest
-                {Patient = new Patient {Id = "1004", Stratum = 2}, Date = DateTime.Now, Hour = DateTime.Now.Date};
+                {Patient = new Patient {Id = "1004", Stratum = 2}, Date = DateTime.Now};
             var serviceA = new RegisterMedicalExamService(new UnitOfWork(_context));
             serviceA.Ejecute(requestA);
 

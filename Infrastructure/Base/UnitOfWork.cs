@@ -13,7 +13,6 @@ namespace Infrastructure.Base
         private IMedicalExamRepository _medicalExamRepository;
         private IPatientRepository _patientRepository;
         private IStratumConfigurationRepository _stratumConfigurationRepository;
-        private IWorkdayConfigurationRepository _workdayConfigurationRepository;
 
         public UnitOfWork(IDbContext dbContext)
         {
@@ -23,10 +22,6 @@ namespace Infrastructure.Base
         public IStratumConfigurationRepository StratumConfigurationRepository =>
             _stratumConfigurationRepository ??
             (_stratumConfigurationRepository = new StratumConfigurationRepository(_dbContext));
-
-        public IWorkdayConfigurationRepository WorkdayConfigurationRepository =>
-            _workdayConfigurationRepository ??
-            (_workdayConfigurationRepository = new WorkdayConfigurationRepository(_dbContext));
 
         public IMedicalAppointmentRepository MedicalAppointmentRepository =>
             _medicalAppointmentRepository ??

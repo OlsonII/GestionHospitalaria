@@ -5,7 +5,8 @@ namespace Domain.Entities
     public interface IMedicalService
     {
         Patient Patient { get; set; }
-        DateTime Hour { get; set; }
+        String Time { get; set; }
+        int Turn { get; set; }
         DateTime Date { get; set; }
         string State { get; set; }
         double Cost { get; }

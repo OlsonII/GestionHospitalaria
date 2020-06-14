@@ -1,5 +1,6 @@
 ﻿using System;
 using Domain.Contracts;
+using Domain.Entities;
 
 namespace Application
 {
@@ -16,14 +17,31 @@ namespace Application
         {
             var medicalAppointment =
                 _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Id == request.Identification);
+
+            var turn = CalculateTurn(request, medicalAppointment);
+
             if (medicalAppointment != null)
             {
-                medicalAppointment.PostponeMedicalAppointment(request.Date, request.Hour);
+                medicalAppointment.PostponeMedicalAppointment(request.Date, turn);
                 _unitOfWork.Commit();
                 return new PostponeMedicalAppointmentResponse {Mensaje = "Cita medica aplazada satisfactoriamente"};
             }
 
             return new PostponeMedicalAppointmentResponse {Mensaje = "Error al aplazar la cita medica"};
+        }
+
+        private int CalculateTurn(PostponeMedicalAppointmentRequest request, MedicalAppointment medicalAppointment)
+        {
+            var turn = 0;
+            var medicalAppointments = 
+                _unitOfWork.MedicalAppointmentRepository.FindBy(m => m.Date == request.Date && m.Doctor == medicalAppointment.Doctor && m.State == "Programada");
+            
+            foreach (var appointment in medicalAppointments)
+            {
+                turn++;
+            }
+
+            return turn;
         }
     }
 

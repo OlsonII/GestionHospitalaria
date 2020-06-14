@@ -101,7 +101,7 @@ namespace DomainTest
             medicalExam.Date = medicalExam.Date.AddHours(8);
             medicalExam.Patient = patient;
             medicalExam.GenerateCost();
-            medicalExam.PostponeExam(medicalExam.Date.AddDays(5), medicalExam.Date);
+            medicalExam.PostponeExam(medicalExam.Date.AddDays(5), 2);
 
             Assert.AreEqual("Aplazado", medicalExam.State);
         }
