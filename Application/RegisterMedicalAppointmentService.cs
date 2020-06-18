@@ -33,10 +33,10 @@ namespace Application
             if (medicalAppointment == null)
             {
                 newMedicalAppointment = new MedicalAppointment();
-                newMedicalAppointment.Doctor = /*new SearchDoctorService(_unitOfWork)
-                    .Ejecute(new SearchDoctorRequest {Identification = request.Doctor.Id}).Doctor; //*/request.Doctor;
-                newMedicalAppointment.Patient =/*new SearchPatientService(_unitOfWork)
-                    .Ejecute(new SearchPatientRequest{Identification = request.Patient.Id}).Patient; //*/request.Patient;
+                newMedicalAppointment.Doctor = new SearchDoctorService(_unitOfWork)
+                    .Ejecute(new SearchDoctorRequest {Identification = request.Doctor.Id}).Doctor; //request.Doctor;
+                newMedicalAppointment.Patient =new SearchPatientService(_unitOfWork)
+                    .Ejecute(new SearchPatientRequest{Identification = request.Patient.Id}).Patient; //request.Patient;
                 newMedicalAppointment.Date = request.Date;
                 newMedicalAppointment.Time = newMedicalAppointment.Doctor.Workday;
                 newMedicalAppointment.Turn = turn;

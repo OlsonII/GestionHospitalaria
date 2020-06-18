@@ -26,9 +26,8 @@ namespace Application
             {
                 newExam = new MedicalExam();
                 newExam.Name = request.Name;
-                newExam.Patient = /*new SearchPatientService(_unitOfWork)
-                    .Ejecute(new SearchPatientRequest{Identification = request.Patient.Id}).Patient; //*/
-                    request.Patient;
+                newExam.Patient = new SearchPatientService(_unitOfWork)
+                    .Ejecute(new SearchPatientRequest{Identification = request.Patient.Id}).Patient; //request.Patient;
                 newExam.Date = request.Date;
                 newExam.Turn = turn;
                 newExam.Time = "Mañana";

@@ -19,7 +19,7 @@ namespace Application
                 _unitOfWork.DoctorRepository.FindFirstOrDefault(d =>
                     d.Id == request.Identification);
             
-            if(ValidateExperience(request.Experience))
+            if(!ValidateExperience(request.Experience))
                 return new RegisterDoctorResponse {Mensaje = "Experiencia no permitida para el registro del doctor"};
             
             if (doctor == null)

@@ -17,13 +17,13 @@ node {
   }
 
   stage ('Test') {
-    bat "dotnet test D:/Proyectos/C#/GestionHospitalaria/DomainTest/DomainTest.csproj --logger trx;LogFileName=unit_tests.trx"
+    bat "dotnet test DomainTest/DomainTest.csproj --logger trx;LogFileName=unit_tests.trx"
     mstest testResultsFile:"**/*.trx", keepLongStdio: true
   }
     
 
   stage('Publish') {
-    bat 'dotnet publish GestionHospitalaria/WebApi/WebApi.csproj -c Release -o D:/Proyectos/C#/GestionHospitalaria'
+    bat 'dotnet publish WebApi/WebApi.csproj -c Release -o D:/Proyectos/C#/GestionHospitalaria'
   } 
   
 }
