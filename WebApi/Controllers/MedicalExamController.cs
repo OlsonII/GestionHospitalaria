@@ -15,6 +15,14 @@ namespace WebApi.Controllers
         {
             _unitOfWork = unitOfWork;
         }
+        
+        [HttpGet]
+        public ActionResult<string> Get()
+        {
+            var service = new SearchMedicalExamService(_unitOfWork);
+            var response = service.Ejecute(new SearchMedicalExamRequest(){Identification = 0});
+            return Ok(response);
+        }
 
         [HttpGet("/{identification}")]
         public ActionResult<MedicalExam> Get(int identification)

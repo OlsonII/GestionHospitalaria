@@ -15,6 +15,10 @@ namespace Application
         public PostponeMedicalExamResponse Ejecute(PostponeMedicalExamRequest request)
         {
             var exam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(e => e.Id == request.Identification);
+            
+            if(!ValidateDate(exam.Date, request.Date))
+                return new PostponeMedicalExamResponse {Mensaje = "Por favor ingrese una fecha posterior a la actual"};
+            
             if (exam != null)
             {
                 exam.CancelExam();
@@ -23,6 +27,14 @@ namespace Application
             }
 
             return new PostponeMedicalExamResponse {Mensaje = "Error al aplazar el examen"};
+        }
+        
+        public bool ValidateDate(DateTime oldDate, DateTime newDate)
+        {
+            if (oldDate.CompareTo(newDate) == 1)
+                return false;
+            
+            return true;
         }
     }
 

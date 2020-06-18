@@ -8,7 +8,7 @@ namespace Domain.Entities
     {
         public Prescription()
         {
-            Medicines = new List<Medicine>();
+            // Medicines = new List<Medicine>();
         }
 
         public override int Id { get; set; }

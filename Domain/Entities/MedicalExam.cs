@@ -19,7 +19,7 @@ namespace Domain.Entities
         public void GenerateCost()
         {
             Cost = Basecost * (1 - Patient.Discount);
-            State = "Asignada";
+            State = "Asignado";
         }
 
         public void CompleteExam()

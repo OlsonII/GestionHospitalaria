@@ -18,6 +18,10 @@ namespace Application
             var doctor =
                 _unitOfWork.DoctorRepository.FindFirstOrDefault(d =>
                     d.Id == request.Identification);
+            
+            if(ValidateExperience(request.Experience))
+                return new RegisterDoctorResponse {Mensaje = "Experiencia no permitida para el registro del doctor"};
+            
             if (doctor == null)
             {
                 newDoctor = new Doctor();
@@ -35,6 +39,14 @@ namespace Application
             }
 
             return new RegisterDoctorResponse {Mensaje = "El doctor que intenta registrar ya existe"};
+        }
+
+        private bool ValidateExperience(int experience)
+        {
+            if (experience < 24)
+                return false;
+            
+            return true;
         }
     }
 

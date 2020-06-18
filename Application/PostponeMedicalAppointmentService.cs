@@ -19,6 +19,9 @@ namespace Application
                 _unitOfWork.MedicalAppointmentRepository.FindFirstOrDefault(m => m.Id == request.Identification);
 
             var turn = CalculateTurn(request, medicalAppointment);
+            
+            if(!ValidateDate(medicalAppointment.Date, request.Date))
+                return new PostponeMedicalAppointmentResponse {Mensaje = "Por favor ingrese una fecha posterior a la actual"};
 
             if (medicalAppointment != null)
             {
@@ -30,6 +33,14 @@ namespace Application
             return new PostponeMedicalAppointmentResponse {Mensaje = "Error al aplazar la cita medica"};
         }
 
+        public bool ValidateDate(DateTime oldDate, DateTime newDate)
+        {
+            if (oldDate.CompareTo(newDate) == 1)
+                return false;
+            
+            return true;
+        }
+
         private int CalculateTurn(PostponeMedicalAppointmentRequest request, MedicalAppointment medicalAppointment)
         {
             var turn = 0;
@@ -38,7 +49,8 @@ namespace Application
             
             foreach (var appointment in medicalAppointments)
             {
-                turn++;
+                if(appointment.State == "Programada" || appointment.State == "Aplazada")
+                    turn++;
             }
 
             return turn;
@@ -49,7 +61,6 @@ namespace Application
     {
         public int Identification { get; set; }
         public DateTime Date { get; set; }
-        public DateTime Hour { get; set; }
     }
 
     public class PostponeMedicalAppointmentResponse

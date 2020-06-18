@@ -22,7 +22,7 @@ namespace Domain.Entities
         public void GenerateCost()
         {
             Cost = _BASECOST * (1 - Patient.Discount);
-            State = "Asignada";
+            State = "Programada";
         }
 
         public void CompleteMedicalAppointment(Prescription prescription)

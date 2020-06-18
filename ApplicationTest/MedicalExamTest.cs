@@ -57,12 +57,12 @@ namespace ApplicationTest
         public void PostponeMedicalAppointmentTest()
         {
             var requestA = new RegisterMedicalExamRequest
-                {Patient = new Patient {Id = "1004", Stratum = 2}, Date = DateTime.Now};
+                {Patient = new Patient {Id = "1004", Stratum = 2}, Date = DateTime.Now.AddDays(3)};
             var serviceA = new RegisterMedicalExamService(new UnitOfWork(_context));
             serviceA.Ejecute(requestA);
 
             var request = new PostponeMedicalExamRequest
-                {Identification = 1, Date = DateTime.Now.AddDays(3)};
+                {Identification = 1, Date = DateTime.Now.AddDays(8)};
             var service = new PostponeMedicalExamService(new UnitOfWork(_context));
             var response = service.Ejecute(request);
             Assert.AreEqual("Examen aplazado Correctamente", response.Mensaje);

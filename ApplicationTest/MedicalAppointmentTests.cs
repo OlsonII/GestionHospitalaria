@@ -35,7 +35,7 @@ namespace ApplicationTest
             var request = new RegisterMedicalAppointmentRequest
             {
                 Doctor = new Doctor {Id = "1111"}, Patient = new Patient {Id = "1001", Stratum = 1},
-                Date = DateTime.Now, Hour = DateTime.Now.Date
+                Date = DateTime.Now.AddDays(5)
             };
             var service = new RegisterMedicalAppointmentService(new UnitOfWork(_context));
             var response = service.Ejecute(request);
@@ -48,7 +48,7 @@ namespace ApplicationTest
             var request = new RegisterMedicalAppointmentRequest
             {
                 Doctor = new Doctor {Id = "2222"}, Patient = new Patient {Id = "1002", Stratum = 1},
-                Date = DateTime.Now, Hour = DateTime.Now.Date
+                Date = DateTime.Now.AddDays(5)
             };
             var service = new RegisterMedicalAppointmentService(new UnitOfWork(_context));
             var response = service.Ejecute(request);
@@ -61,7 +61,7 @@ namespace ApplicationTest
             var request = new RegisterMedicalAppointmentRequest
             {
                 Doctor = new Doctor {Id = "3333"}, Patient = new Patient {Id = "1003", Stratum = 2},
-                Date = DateTime.Now, Hour = DateTime.Now.Date
+                Date = DateTime.Now.AddDays(5)
             };
             var service = new RegisterMedicalAppointmentService(new UnitOfWork(_context));
             var response = service.Ejecute(request);
@@ -74,7 +74,7 @@ namespace ApplicationTest
             var request = new RegisterMedicalAppointmentRequest
             {
                 Doctor = new Doctor {Id = "4444"}, Patient = new Patient {Id = "1004", Stratum = 4},
-                Date = DateTime.Now, Hour = DateTime.Now.Date
+                Date = DateTime.Now.AddDays(5)
             };
             var service = new RegisterMedicalAppointmentService(new UnitOfWork(_context));
             var response = service.Ejecute(request);
@@ -87,7 +87,7 @@ namespace ApplicationTest
             var requestA = new RegisterMedicalAppointmentRequest
             {
                 Doctor = new Doctor {Id = "4444"}, Patient = new Patient {Id = "1004", Stratum = 4},
-                Date = DateTime.Now, Hour = DateTime.Now.Date
+                Date = DateTime.Now.AddDays(5)
             };
             var serviceA = new RegisterMedicalAppointmentService(new UnitOfWork(_context));
             serviceA.Ejecute(requestA);
@@ -104,13 +104,13 @@ namespace ApplicationTest
             var requestA = new RegisterMedicalAppointmentRequest
             {
                 Doctor = new Doctor {Id = "4444"}, Patient = new Patient {Id = "1004", Stratum = 4},
-                Date = DateTime.Now, Hour = DateTime.Now.Date
+                Date = DateTime.Now.AddDays(5)
             };
             var serviceA = new RegisterMedicalAppointmentService(new UnitOfWork(_context));
             serviceA.Ejecute(requestA);
 
             var request = new PostponeMedicalAppointmentRequest
-                {Identification = 1, Date = DateTime.Now.AddDays(3), Hour = DateTime.Now.Date.AddHours(14)};
+                {Identification = 1, Date = DateTime.Now.AddDays(8)};
             var service = new PostponeMedicalAppointmentService(new UnitOfWork(_context));
             var response = service.Ejecute(request);
             Assert.AreEqual("Cita medica aplazada satisfactoriamente", response.Mensaje);
@@ -122,7 +122,7 @@ namespace ApplicationTest
             var requestA = new RegisterMedicalAppointmentRequest
             {
                 Doctor = new Doctor {Id = "4444"}, Patient = new Patient {Id = "1004", Stratum = 4},
-                Date = DateTime.Now, Hour = DateTime.Now.Date
+                Date = DateTime.Now.AddDays(5)
             };
             var serviceA = new RegisterMedicalAppointmentService(new UnitOfWork(_context));
             serviceA.Ejecute(requestA);

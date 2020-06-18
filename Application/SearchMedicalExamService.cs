@@ -1,4 +1,6 @@
-﻿using Domain.Contracts;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Domain.Contracts;
 using Domain.Entities;
 
 namespace Application
@@ -14,8 +16,18 @@ namespace Application
 
         public SearchMedicalExamResponse Ejecute(SearchMedicalExamRequest request)
         {
-            var medicalExam = _unitOfWork.MedicalExamRepository.FindFirstOrDefault(m => m.Id == request.Identification);
-            return new SearchMedicalExamResponse {MedicalExam = medicalExam};
+            if (request.Identification == 0)
+            {
+                var medicalExam = _unitOfWork.MedicalExamRepository.FindBy(includeProperties: "Patient").ToList();
+                return new SearchMedicalExamResponse {MedicalExams = medicalExam};
+            }
+            else
+            {
+                var medicalExam = _unitOfWork.MedicalExamRepository.FindBy(m => m.Id == request.Identification).ToList();
+                return new SearchMedicalExamResponse {MedicalExams = medicalExam};
+            }
+            
+            
         }
     }
 
@@ -26,6 +38,6 @@ namespace Application
 
     public class SearchMedicalExamResponse
     {
-        public MedicalExam MedicalExam { get; set; }
+        public List<MedicalExam> MedicalExams { get; set; }
     }
 }
